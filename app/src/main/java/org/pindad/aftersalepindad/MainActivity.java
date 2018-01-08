@@ -100,7 +100,7 @@ public class MainActivity extends BaseActivity implements
     // [START auth_with_google]
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
         Log.d(TAG, "firebaseAuthWithGoogle:" + acct.getId());
-        showProgressDialog();
+        showProgressDialog("Authentication...");
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -131,6 +131,7 @@ public class MainActivity extends BaseActivity implements
 
     private void updateUI(FirebaseUser user) {
         if (user != null) {
+            showProgressDialog("Open App...");
             mEmail = user.getEmail();
             mUid = user.getUid();
             DatabaseReference root = FirebaseDatabase.getInstance().getReference();
@@ -140,6 +141,7 @@ public class MainActivity extends BaseActivity implements
                 public void onDataChange(DataSnapshot snapshot) {
                     if (snapshot.exists()) {
                         // run some code
+                        hideProgressDialog();
                         Intent intent = new Intent(MainActivity.this, Next.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
