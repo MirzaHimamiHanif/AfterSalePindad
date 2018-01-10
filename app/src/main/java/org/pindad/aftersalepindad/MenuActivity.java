@@ -37,12 +37,13 @@ public class MenuActivity extends AppCompatActivity {
                 case R.id.navigation_home:
                     ImageFragment fragmentImage = new ImageFragment();
                     fragmentManager.beginTransaction()
-                            .remove(fragmentImage)
+                            .replace(R.id.imageContainer, fragmentImage)
+                            .addToBackStack(null)
                             .commit();
                     CatalogueFragment catalogueFragment = new CatalogueFragment();
                     fragmentManager.beginTransaction()
-                            .remove(catalogueFragment)
-                            .add(R.id.catalogueContainer, catalogueFragment)
+                            .replace(R.id.catalogueContainer, catalogueFragment)
+                            .addToBackStack(null)
                             .commit();
                     return true;
                 case R.id.navigation_dashboard:
