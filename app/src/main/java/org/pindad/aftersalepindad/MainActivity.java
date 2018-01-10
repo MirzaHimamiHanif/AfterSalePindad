@@ -142,7 +142,7 @@ public class MainActivity extends BaseActivity implements
                     if (snapshot.exists()) {
                         // run some code
                         hideProgressDialog();
-                        Intent intent = new Intent(MainActivity.this, Next.class);
+                        Intent intent = new Intent(MainActivity.this, MenuActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                     }else{

@@ -51,7 +51,7 @@ public class IsiData extends AppCompatActivity{
             public void onClick(View view) {
                 tambahData();
                 Log.d("Tes ", "Berhasil");
-                Intent intent = new Intent(IsiData.this, Next.class);
+                Intent intent = new Intent(IsiData.this, MenuActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }

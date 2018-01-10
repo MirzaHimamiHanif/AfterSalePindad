@@ -19,7 +19,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".IsiData" />
-        <activity android:name=".Next"></activity>
+        <activity android:name=".Next" />
+        <activity
+            android:name=".MenuActivity"
+            android:label="@string/title_activity_menu"></activity>
     </application>
 
 </manifest>
