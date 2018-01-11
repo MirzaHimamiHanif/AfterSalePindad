@@ -1,7 +1,5 @@
-package org.pindad.aftersalepindad;
+package org.pindad.aftersalepindad.Fragment;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
@@ -9,6 +7,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import org.pindad.aftersalepindad.Adapter.CatalogueAdapter;
+import org.pindad.aftersalepindad.R;
 
 public class CatalogueFragment extends Fragment {
     RecyclerView mRecyclerView;

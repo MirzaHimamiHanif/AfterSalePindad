@@ -6,7 +6,9 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
-import android.widget.TextView;
+
+import org.pindad.aftersalepindad.Fragment.CatalogueFragment;
+import org.pindad.aftersalepindad.Fragment.ImageFragment;
 
 public class MenuActivity extends AppCompatActivity {
     FragmentManager fragmentManager;
@@ -23,9 +25,9 @@ public class MenuActivity extends AppCompatActivity {
                 .add(R.id.imageContainer, fragmentImage)
                 .commit();
         CatalogueFragment catalogueFragment = new CatalogueFragment();
-        fragmentManager.beginTransaction()
-                .add(R.id.catalogueContainer, catalogueFragment)
-                .commit();
+//        fragmentManager.beginTransaction()
+//                .add(R.id.catalogueContainer, catalogueFragment)
+//                .commit();
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -40,10 +42,10 @@ public class MenuActivity extends AppCompatActivity {
                             .remove(fragmentImage)
                             .commit();
                     CatalogueFragment catalogueFragment = new CatalogueFragment();
-                    fragmentManager.beginTransaction()
-                            .remove(catalogueFragment)
-                            .add(R.id.catalogueContainer, catalogueFragment)
-                            .commit();
+//                    fragmentManager.beginTransaction()
+//                            .remove(catalogueFragment)
+//                            .add(R.id.catalogueContainer, catalogueFragment)
+//                            .commit();
                     return true;
                 case R.id.navigation_dashboard:
                     return true;

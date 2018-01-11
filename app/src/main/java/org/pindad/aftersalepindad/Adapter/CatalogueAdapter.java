@@ -1,12 +1,14 @@
-package org.pindad.aftersalepindad;
+package org.pindad.aftersalepindad.Adapter;
 
-import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import org.pindad.aftersalepindad.ListCatalogue;
+import org.pindad.aftersalepindad.R;
 
 import java.util.ArrayList;
 
