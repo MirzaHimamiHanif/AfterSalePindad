@@ -20,14 +20,14 @@ public class MenuActivity extends AppCompatActivity {
         fragmentManager = getSupportFragmentManager();
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        ImageFragment fragmentImage = new ImageFragment();
-        fragmentManager.beginTransaction()
-                .add(R.id.imageContainer, fragmentImage)
-                .commit();
-        CatalogueFragment catalogueFragment = new CatalogueFragment();
+//        ImageFragment fragmentImage = new ImageFragment();
 //        fragmentManager.beginTransaction()
-//                .add(R.id.catalogueContainer, catalogueFragment)
+//                .add(R.id.imageContainer, fragmentImage)
 //                .commit();
+        CatalogueFragment catalogueFragment = new CatalogueFragment();
+        fragmentManager.beginTransaction()
+                .add(R.id.catalogueContainer, catalogueFragment)
+                .commit();
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -37,15 +37,15 @@ public class MenuActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    ImageFragment fragmentImage = new ImageFragment();
-                    fragmentManager.beginTransaction()
-                            .remove(fragmentImage)
-                            .commit();
-                    CatalogueFragment catalogueFragment = new CatalogueFragment();
+//                    ImageFragment fragmentImage = new ImageFragment();
 //                    fragmentManager.beginTransaction()
-//                            .remove(catalogueFragment)
-//                            .add(R.id.catalogueContainer, catalogueFragment)
+//                            .remove(fragmentImage)
 //                            .commit();
+                    CatalogueFragment catalogueFragment = new CatalogueFragment();
+                    fragmentManager.beginTransaction()
+                            .remove(catalogueFragment)
+                            .add(R.id.catalogueContainer, catalogueFragment)
+                            .commit();
                     return true;
                 case R.id.navigation_dashboard:
                     return true;

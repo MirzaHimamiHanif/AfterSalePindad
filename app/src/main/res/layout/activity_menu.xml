@@ -11,16 +11,17 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <FrameLayout android:id="@+id/imageContainer"
+        <!--<FrameLayout android:id="@+id/imageContainer"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_above="@+id/navigation"-->
+            <!--android:scaleType="centerInside"/>-->
+
+        <FrameLayout android:id="@+id/catalogueContainer"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_above="@+id/navigation"
             android:scaleType="centerInside"/>
-
-        <!--<FrameLayout android:id="@+id/catalogueContainer"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:scaleType="centerInside"/>-->
 
         <android.support.design.widget.BottomNavigationView
             android:id="@+id/navigation"

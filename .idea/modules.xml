@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/AfterSalePindad.iml" filepath="$PROJECT_DIR$/.idea/AfterSalePindad.iml" />
-      <module fileurl="file://D:\Magang Pindad\AfterSalePindad\.idea\AfterSalePindad.iml" filepath="D:\Magang Pindad\AfterSalePindad\.idea\AfterSalePindad.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AfterSalePindad.iml" filepath="$PROJECT_DIR$/AfterSalePindad.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://D:\Magang Pindad\AfterSalePindad\app\app.iml" filepath="D:\Magang Pindad\AfterSalePindad\app\app.iml" />
     </modules>
   </component>
 </project>
