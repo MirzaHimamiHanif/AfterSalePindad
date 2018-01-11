@@ -4,17 +4,29 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import org.pindad.aftersalepindad.Adapter.CatalogueAdapter;
+import org.pindad.aftersalepindad.Model.GetCatalog;
+import org.pindad.aftersalepindad.Model.ListCatalogue;
 import org.pindad.aftersalepindad.R;
+import org.pindad.aftersalepindad.Rest.ApiClient;
+import org.pindad.aftersalepindad.Rest.ApiInterface;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class CatalogueFragment extends Fragment {
     RecyclerView mRecyclerView;
     RecyclerView.LayoutManager mLayoutManager;
     RecyclerView.Adapter mAdapter;
+    ApiInterface mApiInterface;
 
     public CatalogueFragment(){
 
@@ -30,10 +42,28 @@ public class CatalogueFragment extends Fragment {
 
         mLayoutManager  = new GridLayoutManager(getActivity(),2);
         mRecyclerView.setLayoutManager(mLayoutManager);
-
-        mAdapter = new CatalogueAdapter();
-        mRecyclerView.setAdapter(mAdapter);
+        mApiInterface = ApiClient.getClient().create(ApiInterface.class);
+        refresh();
 
         return view ;
+    }
+    public void refresh() {
+        Call<List<ListCatalogue>> kontakCall = mApiInterface.getCatalogue();
+        kontakCall.enqueue(new Callback<List<ListCatalogue>>() {
+            @Override
+            public void onResponse(Call<List<ListCatalogue>> call, Response<List<ListCatalogue>>
+                    response) {
+                List<ListCatalogue> KontakList = response.body();
+                Log.d("Retrofit Get", "Jumlah data Kontak: " +
+                        String.valueOf(KontakList.size()));
+                mAdapter = new CatalogueAdapter(KontakList);
+                mRecyclerView.setAdapter(mAdapter);
+            }
+
+            @Override
+            public void onFailure(Call<List<ListCatalogue>> call, Throwable t) {
+                Log.e("Retrofit Get", t.toString());
+            }
+        });
     }
 }

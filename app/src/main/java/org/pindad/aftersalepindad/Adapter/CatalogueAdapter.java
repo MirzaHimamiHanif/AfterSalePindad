@@ -7,57 +7,21 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import org.pindad.aftersalepindad.ListCatalogue;
+import org.pindad.aftersalepindad.Model.ListCatalogue;
 import org.pindad.aftersalepindad.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by ASUS on 10/01/2018.
  */
 
 public class CatalogueAdapter extends RecyclerView.Adapter<CatalogueAdapter.ViewHolder>{
-    private ArrayList<ListCatalogue> listItems;
+    private List<ListCatalogue> listItems;
 
-    public CatalogueAdapter() {
-        super();
-        listItems = new ArrayList<ListCatalogue>();
-        ListCatalogue listCatalogue = new ListCatalogue();
-
-        listCatalogue.setNama("a");
-        listCatalogue.setDeskripsi("aaaaaaa");
-        listCatalogue.setImageUrl(R.drawable.ic_android_black_24dp);
-        listItems.add(listCatalogue);
-
-        listCatalogue = new ListCatalogue();
-        listCatalogue.setNama("b");
-        listCatalogue.setDeskripsi("bbbbbb");
-        listCatalogue.setImageUrl(R.drawable.ic_android_black_24dp);
-        listItems.add(listCatalogue);
-
-        listCatalogue = new ListCatalogue();
-        listCatalogue.setNama("c");
-        listCatalogue.setDeskripsi("cccccc");
-        listCatalogue.setImageUrl(R.drawable.ic_android_black_24dp);
-        listItems.add(listCatalogue);
-
-        listCatalogue = new ListCatalogue();
-        listCatalogue.setNama("d");
-        listCatalogue.setDeskripsi("dddddd");
-        listCatalogue.setImageUrl(R.drawable.ic_android_black_24dp);
-        listItems.add(listCatalogue);
-
-        listCatalogue = new ListCatalogue();
-        listCatalogue.setNama("e");
-        listCatalogue.setDeskripsi("eeeeee");
-        listCatalogue.setImageUrl(R.drawable.ic_android_black_24dp);
-        listItems.add(listCatalogue);
-
-        listCatalogue = new ListCatalogue();
-        listCatalogue.setNama("f");
-        listCatalogue.setDeskripsi("fffffff");
-        listCatalogue.setImageUrl(R.drawable.ic_android_black_24dp);
-        listItems.add(listCatalogue);
+    public CatalogueAdapter(List<ListCatalogue> List) {
+        listItems = List;
     }
 
 
@@ -71,10 +35,9 @@ public class CatalogueAdapter extends RecyclerView.Adapter<CatalogueAdapter.View
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        ListCatalogue nature = listItems.get(position);
-        holder.nameCatalogue.setText(nature.getNama());
-        holder.description.setText(nature.getDeskripsi());
-        holder.image.setImageResource(nature.getImageUrl());
+        holder.nameCatalogue.setText(listItems.get(position).getNama());
+        holder.description.setText(listItems.get(position).getDeskripsi());
+        holder.image.setImageResource(R.drawable.ic_android_black_24dp);
     }
 
     @Override

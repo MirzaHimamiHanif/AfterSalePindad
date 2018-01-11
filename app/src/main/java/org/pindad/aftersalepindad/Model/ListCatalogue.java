@@ -1,7 +1,11 @@
-package org.pindad.aftersalepindad;
+package org.pindad.aftersalepindad.Model;
+
+import com.google.gson.annotations.SerializedName;
 
 public class ListCatalogue {
+    @SerializedName("nama")
     private String nama;
+    @SerializedName("deskripsi")
     private String deskripsi;
     private int imageUrl;
 
