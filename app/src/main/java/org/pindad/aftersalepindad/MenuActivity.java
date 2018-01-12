@@ -1,33 +1,207 @@
 package org.pindad.aftersalepindad;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.ProgressBar;
+
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import org.pindad.aftersalepindad.Fragment.CatalogueFragment;
 import org.pindad.aftersalepindad.Fragment.ImageFragment;
+import org.pindad.aftersalepindad.Fragment.IsiDataFragment;
+import org.pindad.aftersalepindad.Fragment.LoginFragment;
 
-public class MenuActivity extends AppCompatActivity {
+import static android.view.View.GONE;
+import static android.view.View.VISIBLE;
+
+public class MenuActivity extends BaseActivity {
     FragmentManager fragmentManager;
+    private static final String TAG = "GoogleActivity";
+    private static final int RC_SIGN_IN = 9001;
+    private String mEmail, mUid;
+    private ProgressBar mProgressBar;
+    // [START declare_auth]
+    private FirebaseAuth mAuth;
+    // [END declare_auth]
+    private GoogleApiClient mGoogleApiClient;
+    private GoogleSignInClient mGoogleSignInClient;
+    private BottomNavigationView navigation;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+        mProgressBar = (ProgressBar) findViewById(R.id.progressBar1);
 
+        // [START config_signin]
+        // Configure Google Sign In
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
+        // [END config_signin]
+
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+
+        // [START initialize_auth]
+        mAuth = FirebaseAuth.getInstance();
+        // [END initialize_auth]
+        mGoogleApiClient = new GoogleApiClient.Builder(this)
+                .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
+                .build();
+        mGoogleApiClient.connect();
         fragmentManager = getSupportFragmentManager();
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-//        ImageFragment fragmentImage = new ImageFragment();
-//        fragmentManager.beginTransaction()
-//                .add(R.id.imageContainer, fragmentImage)
-//                .commit();
-        CatalogueFragment catalogueFragment = new CatalogueFragment();
-        fragmentManager.beginTransaction()
-                .add(R.id.catalogueContainer, catalogueFragment)
-                .commit();
+    }
+    // [START on_start_check_user]
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        updateUI(currentUser);
+    }
+    // [END on_start_check_user]
+
+    // [START onactivityresult]
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
+        if (requestCode == RC_SIGN_IN) {
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            try {
+                // Google Sign In was successful, authenticate with Firebase
+                GoogleSignInAccount account = task.getResult(ApiException.class);
+                firebaseAuthWithGoogle(account);
+            } catch (ApiException e) {
+                // Google Sign In failed, update UI appropriately
+                Log.w(TAG, "Google sign in failed", e);
+                // [START_EXCLUDE]
+                updateUI(null);
+                // [END_EXCLUDE]
+            }
+        }else {
+
+        }
+    }
+    // [END onactivityresult]
+
+    // [START auth_with_google]
+    private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
+        Log.d(TAG, "firebaseAuthWithGoogle:" + acct.getId());
+        showProgressDialog("Authentication...");
+        AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
+        mAuth.signInWithCredential(credential)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d(TAG, "signInWithCredential:success");
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            hideProgressDialog();
+                            updateUI(user);
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w(TAG, "signInWithCredential:failure", task.getException());
+                            hideProgressDialog();
+                            updateUI(null);
+                        }
+
+                    }
+                });
+    }
+    // [END auth_with_google]
+
+    // [START signin]
+    public void signIn() {
+        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+        startActivityForResult(signInIntent, RC_SIGN_IN);
+    }
+    public String getmUid(){
+        return mUid;
+    }
+    public String getmEmail(){
+        return mEmail;
+    }
+    private void updateUI(FirebaseUser user) {
+        if (user != null) {
+            FrameLayout loginContainer = (FrameLayout) findViewById(R.id.loginContainer);
+            loginContainer.setVisibility(GONE);
+            navigation.setVisibility(View.VISIBLE);
+            mEmail = user.getEmail();
+            mUid = user.getUid();
+            mProgressBar.setVisibility(View.VISIBLE);
+            DatabaseReference root = FirebaseDatabase.getInstance().getReference();
+            DatabaseReference users = root.child("users").child(mUid);
+            users.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot snapshot) {
+                    if (snapshot.exists()) {
+                        // run some code
+                        mProgressBar.setVisibility(View.GONE);
+                        CatalogueFragment catalogueFragment = new CatalogueFragment();
+                        fragmentManager.beginTransaction()
+                                .add(R.id.catalogueContainer, catalogueFragment)
+                                .commit();
+                    }else{
+                        navigation.setVisibility(GONE);
+                        mProgressBar.setVisibility(View.GONE);
+                        FrameLayout isiDataContainer = (FrameLayout) findViewById(R.id.loginContainer);
+                        isiDataContainer.setVisibility(VISIBLE);
+                        IsiDataFragment isiDataFragment = new IsiDataFragment();
+                        fragmentManager.beginTransaction()
+                                .replace(R.id.loginContainer, isiDataFragment)
+                                .addToBackStack(null)
+                                .commit();
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+
+        }else{
+            mProgressBar.setVisibility(View.GONE);
+            navigation.setVisibility(GONE);
+            LoginFragment loginFragment = new LoginFragment();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.loginContainer, loginFragment)
+                    .addToBackStack(null)
+                    .commit();
+        }
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -43,13 +217,20 @@ public class MenuActivity extends AppCompatActivity {
 //                            .commit();
                     CatalogueFragment catalogueFragment = new CatalogueFragment();
                     fragmentManager.beginTransaction()
-                            .remove(catalogueFragment)
                             .add(R.id.catalogueContainer, catalogueFragment)
                             .commit();
                     return true;
                 case R.id.navigation_dashboard:
                     return true;
                 case R.id.navigation_notifications:
+                    mAuth.signOut();
+                    Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(new ResultCallback<Status>() {
+                        @Override
+                        public void onResult(@NonNull Status status) {
+                            finish();
+                            startActivity(getIntent());
+                        }
+                    });
                     return true;
             }
             return false;
