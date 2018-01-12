@@ -79,6 +79,7 @@ public class MenuActivity extends BaseActivity {
         mGoogleApiClient.connect();
         fragmentManager = getSupportFragmentManager();
         navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        navigation.setVisibility(View.GONE);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
     // [START on_start_check_user]
@@ -211,10 +212,6 @@ public class MenuActivity extends BaseActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-//                    ImageFragment fragmentImage = new ImageFragment();
-//                    fragmentManager.beginTransaction()
-//                            .remove(fragmentImage)
-//                            .commit();
                     CatalogueFragment catalogueFragment = new CatalogueFragment();
                     fragmentManager.beginTransaction()
                             .add(R.id.catalogueContainer, catalogueFragment)
@@ -226,9 +223,13 @@ public class MenuActivity extends BaseActivity {
                     mAuth.signOut();
                     Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(new ResultCallback<Status>() {
                         @Override
-                        public void onResult(@NonNull Status status) {
+                        public void onResult(@NonNull Status status) {Intent intent = getIntent();
+                            overridePendingTransition(0, 0);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                             finish();
-                            startActivity(getIntent());
+                            overridePendingTransition(0, 0);
+                            startActivity(intent);
+
                         }
                     });
                     return true;

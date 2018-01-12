@@ -1,5 +1,6 @@
 package org.pindad.aftersalepindad.Rest;
 
+import org.pindad.aftersalepindad.Model.DataTicketing;
 import org.pindad.aftersalepindad.Model.GetCatalog;
 import org.pindad.aftersalepindad.Model.ListCatalogue;
 import org.pindad.aftersalepindad.Model.PostPulDelCatalogue;
@@ -21,10 +22,18 @@ import retrofit2.http.PUT;
 public interface ApiInterface {
     @GET("barang")
     Call<List<ListCatalogue>> getCatalogue();
+
+    @GET("ticketing")
+    Call<List<DataTicketing>> getDataTicketing();
     @FormUrlEncoded
-    @POST("kontak")
+
+    @POST("ticketing")
     Call<PostPulDelCatalogue> postCatalogue(@Field("nama") String nama,
-                                         @Field("nomor") String nomor);
+                                         @Field("perusahaan") String perusahaan,
+                                            @Field("telp") String telp,
+                                            @Field("nama_barang") String nama_barang,
+                                            @Field("pesan") String pesan,
+                                            @Field("email") String email);
     @FormUrlEncoded
     @PUT("kontak")
     Call<PostPulDelCatalogue> putCatalogue(@Field("id") String id,

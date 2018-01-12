@@ -25,8 +25,9 @@
         <activity android:name=".Next" />
         <activity
             android:name=".MenuActivity"
-        android:label="@string/title_activity_menu" />
-        <activity android:name=".YoutubeActivity"></activity>
+            android:label="@string/title_activity_menu" />
+        <activity android:name=".YoutubeActivity" />
+        <activity android:name=".BarangActivity"></activity>
     </application>
 
 </manifest>
