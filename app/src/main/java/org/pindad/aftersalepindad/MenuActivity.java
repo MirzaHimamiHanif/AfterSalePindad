@@ -79,7 +79,6 @@ public class MenuActivity extends BaseActivity {
         mGoogleApiClient.connect();
         fragmentManager = getSupportFragmentManager();
         navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        navigation.setVisibility(View.GONE);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
     // [START on_start_check_user]
@@ -183,7 +182,6 @@ public class MenuActivity extends BaseActivity {
                         IsiDataFragment isiDataFragment = new IsiDataFragment();
                         fragmentManager.beginTransaction()
                                 .replace(R.id.loginContainer, isiDataFragment)
-                                .addToBackStack(null)
                                 .commit();
                     }
                 }
@@ -200,7 +198,6 @@ public class MenuActivity extends BaseActivity {
             LoginFragment loginFragment = new LoginFragment();
             fragmentManager.beginTransaction()
                     .replace(R.id.loginContainer, loginFragment)
-                    .addToBackStack(null)
                     .commit();
         }
     }
@@ -214,7 +211,7 @@ public class MenuActivity extends BaseActivity {
                 case R.id.navigation_home:
                     CatalogueFragment catalogueFragment = new CatalogueFragment();
                     fragmentManager.beginTransaction()
-                            .add(R.id.catalogueContainer, catalogueFragment)
+                            .replace(R.id.catalogueContainer, catalogueFragment)
                             .commit();
                     return true;
                 case R.id.navigation_dashboard:

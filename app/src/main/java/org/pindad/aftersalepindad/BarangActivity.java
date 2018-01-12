@@ -76,13 +76,11 @@ public class BarangActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         final FirebaseUser currentUser = mAuth.getCurrentUser();
         mUid = currentUser.getUid();
-        Toast.makeText(getApplicationContext(), mUid, Toast.LENGTH_LONG).show();
         mKirim.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 DatabaseReference root = FirebaseDatabase.getInstance().getReference();
-                DatabaseReference users = root.child("users").child(mUid);
-                users.addListenerForSingleValueEvent(new ValueEventListener() {
+                root.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot snapshot) {
                         showData(snapshot);
@@ -99,17 +97,17 @@ public class BarangActivity extends AppCompatActivity {
     private void showData(DataSnapshot dataSnapshot) {
         final DataTicketing dataTicketing = new DataTicketing();
         for(DataSnapshot ds : dataSnapshot.getChildren()){
-            dataTicketing.setEmail(ds.getValue(String.class)); //set the email
-            dataTicketing.setNama(ds.getValue(String.class)); //set the name
-            dataTicketing.setTelp(ds.getValue(String.class));
-            dataTicketing.setPerusahaan(ds.getValue(String.class));
+            dataTicketing.setEmail(ds.child(mUid).getValue(DataTicketing.class).getEmail()); //set the email
+            dataTicketing.setNama(ds.child(mUid).getValue(DataTicketing.class).getNama()); //set the name
+            dataTicketing.setNoTelp(ds.child(mUid).getValue(DataTicketing.class).getNoTelp());
+            dataTicketing.setPerusahaan(ds.child(mUid).getValue(DataTicketing.class).getPerusahaan());
         }
         dataTicketing.setNama_barang(mNama.getText().toString());
         dataTicketing.setPesan(comment.getText().toString());
         Call<PostPulDelCatalogue> postCatalogue = mApiInterface.postCatalogue(
                 dataTicketing.getNama(),
                 dataTicketing.getPerusahaan(),
-                dataTicketing.getTelp(),
+                dataTicketing.getNoTelp(),
                 dataTicketing.getNama_barang(),
                 dataTicketing.getPesan(),
                 dataTicketing.getEmail()

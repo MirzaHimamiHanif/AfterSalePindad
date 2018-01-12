@@ -5,7 +5,7 @@ package org.pindad.aftersalepindad.Model;
  */
 
 public class DataTicketing {
-    private String nama, perusahaan, telp, nama_barang, pesan, email;
+    private String nama, perusahaan, noTelp, nama_barang, pesan, email;
 
     public DataTicketing(){
 
@@ -14,7 +14,7 @@ public class DataTicketing {
     public DataTicketing(String nama, String perusahaan, String telp, String nama_barang, String pesan, String email) {
         this.nama = nama;
         this.perusahaan = perusahaan;
-        this.telp = telp;
+        this.noTelp = telp;
         this.nama_barang = nama_barang;
         this.pesan = pesan;
         this.email = email;
@@ -36,12 +36,12 @@ public class DataTicketing {
         this.perusahaan = perusahaan;
     }
 
-    public String getTelp() {
-        return telp;
+    public String getNoTelp() {
+        return noTelp;
     }
 
-    public void setTelp(String telp) {
-        this.telp = telp;
+    public void setNoTelp(String telp) {
+        this.noTelp = telp;
     }
 
     public String getNama_barang() {
