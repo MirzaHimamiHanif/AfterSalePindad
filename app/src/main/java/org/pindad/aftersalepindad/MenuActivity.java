@@ -38,6 +38,10 @@ import org.pindad.aftersalepindad.Fragment.CatalogueFragment;
 import org.pindad.aftersalepindad.Fragment.ImageFragment;
 import org.pindad.aftersalepindad.Fragment.IsiDataFragment;
 import org.pindad.aftersalepindad.Fragment.LoginFragment;
+import org.pindad.aftersalepindad.Fragment.NoInternetFragment;
+
+import java.net.URL;
+import java.net.URLConnection;
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
@@ -168,12 +172,12 @@ public class MenuActivity extends BaseActivity {
                 @Override
                 public void onDataChange(DataSnapshot snapshot) {
                     if (snapshot.exists()) {
-                        // run some code
                         mProgressBar.setVisibility(View.GONE);
                         CatalogueFragment catalogueFragment = new CatalogueFragment();
                         fragmentManager.beginTransaction()
                                 .add(R.id.catalogueContainer, catalogueFragment)
-                                .commit();
+                                .commit();                        // run some code
+
                     }else{
                         navigation.setVisibility(GONE);
                         mProgressBar.setVisibility(View.GONE);
@@ -191,13 +195,11 @@ public class MenuActivity extends BaseActivity {
 
                 }
             });
-
         }else{
             mProgressBar.setVisibility(View.GONE);
-            navigation.setVisibility(GONE);
-            LoginFragment loginFragment = new LoginFragment();
+            NoInternetFragment loginFragment = new NoInternetFragment();
             fragmentManager.beginTransaction()
-                    .replace(R.id.loginContainer, loginFragment)
+                    .add(R.id.loginContainer, loginFragment)
                     .commit();
         }
     }
@@ -209,32 +211,44 @@ public class MenuActivity extends BaseActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    CatalogueFragment catalogueFragment = new CatalogueFragment();
-                    fragmentManager.beginTransaction()
-                            .replace(R.id.catalogueContainer, catalogueFragment)
-                            .commit();Intent intent = getIntent();
+                   cek("catalogue");
                     return true;
                 case R.id.navigation_dashboard:
-                            Intent i = new  Intent(MenuActivity.this, VideoActivity.class);
-                    startActivity(i);
+                    cek("video");
+
                     return true;
                 case R.id.navigation_notifications:
-                    mAuth.signOut();
-                    Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(new ResultCallback<Status>() {
-                        @Override
-                        public void onResult(@NonNull Status status) {Intent intent = getIntent();
-                            overridePendingTransition(0, 0);
-                            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                            finish();
-                            overridePendingTransition(0, 0);
-                            startActivity(intent);
+                    cek("faq");
 
-                        }
-                    });
                     return true;
             }
             return false;
         }
     };
-
+    public void cek(String tes){
+        switch (tes){
+            case "catalogue" :
+                CatalogueFragment catalogueFragment = new CatalogueFragment();
+                fragmentManager.beginTransaction()
+                        .add(R.id.catalogueContainer, catalogueFragment)
+                        .commit();Intent intent = getIntent();
+                break;
+            case "video" :
+                Intent i = new  Intent(MenuActivity.this, VideoActivity.class);
+                startActivity(i);
+                break;
+            case "faq" :
+                mAuth.signOut();
+                Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(new ResultCallback<Status>() {
+                    @Override
+                    public void onResult(@NonNull Status status) {Intent intent = getIntent();
+                        overridePendingTransition(0, 0);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                        finish();
+                        overridePendingTransition(0, 0);
+                        startActivity(intent);
+                    }
+                });
+        }
+    }
 }
