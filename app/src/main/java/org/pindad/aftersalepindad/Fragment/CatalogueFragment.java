@@ -54,8 +54,6 @@ public class CatalogueFragment extends Fragment {
             public void onResponse(Call<List<ListCatalogue>> call, Response<List<ListCatalogue>>
                     response) {
                 List<ListCatalogue> KontakList = response.body();
-                Log.d("Retrofit Get", "Jumlah data Kontak: " +
-                        String.valueOf(KontakList.size()));
                 mAdapter = new CatalogueAdapter(getContext(), KontakList);
                 mRecyclerView.setAdapter(mAdapter);
             }

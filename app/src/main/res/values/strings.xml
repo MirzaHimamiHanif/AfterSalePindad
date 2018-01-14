@@ -7,6 +7,7 @@
     <string name="signed_in_fmt">Signed in as: %s</string>
     <string name="signed_out">Signed out</string>
     <string name="loading">Loading…</string>
+    <string name="player_error">Error initializing YouTube player: %s</string>
 
     <!-- Button labels -->
     <string name="sign_out">Sign Out</string>

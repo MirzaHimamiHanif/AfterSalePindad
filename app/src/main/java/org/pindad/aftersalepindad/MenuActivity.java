@@ -212,9 +212,11 @@ public class MenuActivity extends BaseActivity {
                     CatalogueFragment catalogueFragment = new CatalogueFragment();
                     fragmentManager.beginTransaction()
                             .replace(R.id.catalogueContainer, catalogueFragment)
-                            .commit();
+                            .commit();Intent intent = getIntent();
                     return true;
                 case R.id.navigation_dashboard:
+                            Intent i = new  Intent(MenuActivity.this, VideoActivity.class);
+                    startActivity(i);
                     return true;
                 case R.id.navigation_notifications:
                     mAuth.signOut();
