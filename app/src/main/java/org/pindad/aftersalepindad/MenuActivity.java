@@ -196,8 +196,9 @@ public class MenuActivity extends BaseActivity {
                 }
             });
         }else{
+            navigation.setVisibility(GONE);
             mProgressBar.setVisibility(View.GONE);
-            NoInternetFragment loginFragment = new NoInternetFragment();
+            LoginFragment loginFragment = new LoginFragment();
             fragmentManager.beginTransaction()
                     .add(R.id.loginContainer, loginFragment)
                     .commit();
