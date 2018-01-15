@@ -27,7 +27,7 @@
             android:name=".MenuActivity"
             android:label="@string/title_activity_menu" />
         <activity android:name=".BarangActivity" />
-        <activity android:name=".VideoActivity"></activity>
+        <activity android:name=".VideoActivity" />
     </application>
 
 </manifest>

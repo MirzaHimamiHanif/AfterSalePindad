@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
@@ -47,6 +49,8 @@ import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 
 public class MenuActivity extends BaseActivity {
+    DrawerLayout drawerLayout;
+    NavigationView navigationView;
     FragmentManager fragmentManager;
     private static final String TAG = "GoogleActivity";
     private static final int RC_SIGN_IN = 9001;
@@ -176,8 +180,7 @@ public class MenuActivity extends BaseActivity {
                         CatalogueFragment catalogueFragment = new CatalogueFragment();
                         fragmentManager.beginTransaction()
                                 .add(R.id.catalogueContainer, catalogueFragment)
-                                .commit();                        // run some code
-
+                                .commit();
                     }else{
                         navigation.setVisibility(GONE);
                         mProgressBar.setVisibility(View.GONE);
@@ -231,7 +234,7 @@ public class MenuActivity extends BaseActivity {
             case "catalogue" :
                 CatalogueFragment catalogueFragment = new CatalogueFragment();
                 fragmentManager.beginTransaction()
-                        .add(R.id.catalogueContainer, catalogueFragment)
+                        .replace(R.id.catalogueContainer, catalogueFragment)
                         .commit();Intent intent = getIntent();
                 break;
             case "video" :
