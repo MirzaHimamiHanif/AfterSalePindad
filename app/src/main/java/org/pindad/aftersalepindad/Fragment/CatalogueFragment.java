@@ -77,8 +77,8 @@ public class CatalogueFragment extends Fragment {
             @Override
             public void onResponse(Call<List<ListCatalogue>> call, Response<List<ListCatalogue>>
                     response) {
-                relativeLayout.setVisibility(View.VISIBLE);
-                mRecyclerView.setVisibility(View.GONE);
+                relativeLayout.setVisibility(View.GONE);
+                mRecyclerView.setVisibility(View.VISIBLE);
                 List<ListCatalogue> KontakList = response.body();
                 mAdapter = new CatalogueAdapter(getContext(), KontakList);
                 mRecyclerView.setAdapter(mAdapter);
@@ -87,8 +87,8 @@ public class CatalogueFragment extends Fragment {
             @Override
             public void onFailure(Call<List<ListCatalogue>> call, Throwable t) {
                 Log.e("Retrofit Get", t.toString());
-                relativeLayout.setVisibility(View.GONE);
-                mRecyclerView.setVisibility(View.VISIBLE);
+                relativeLayout.setVisibility(View.VISIBLE);
+                mRecyclerView.setVisibility(View.GONE);
             }
         });
     }
