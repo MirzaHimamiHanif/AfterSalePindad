@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
@@ -39,7 +40,7 @@ public class CatalogueFragment extends Fragment {
     RecyclerView.LayoutManager mLayoutManager;
     RecyclerView.Adapter mAdapter;
     ApiInterface mApiInterface;
-
+    RelativeLayout relativeLayout;
     public CatalogueFragment(){
 
     }
@@ -49,6 +50,7 @@ public class CatalogueFragment extends Fragment {
         // Inflate the layout for this fragment
 
         View view = inflater.inflate(R.layout.fragment_catalogue, container, false);
+        relativeLayout = (RelativeLayout) view.findViewById(R.id.noInternet);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.catalogueRV);
         mRecyclerView.setHasFixedSize(true);
         setHasOptionsMenu(true);
@@ -75,6 +77,8 @@ public class CatalogueFragment extends Fragment {
             @Override
             public void onResponse(Call<List<ListCatalogue>> call, Response<List<ListCatalogue>>
                     response) {
+                relativeLayout.setVisibility(View.VISIBLE);
+                mRecyclerView.setVisibility(View.GONE);
                 List<ListCatalogue> KontakList = response.body();
                 mAdapter = new CatalogueAdapter(getContext(), KontakList);
                 mRecyclerView.setAdapter(mAdapter);
@@ -83,6 +87,8 @@ public class CatalogueFragment extends Fragment {
             @Override
             public void onFailure(Call<List<ListCatalogue>> call, Throwable t) {
                 Log.e("Retrofit Get", t.toString());
+                relativeLayout.setVisibility(View.GONE);
+                mRecyclerView.setVisibility(View.VISIBLE);
             }
         });
     }

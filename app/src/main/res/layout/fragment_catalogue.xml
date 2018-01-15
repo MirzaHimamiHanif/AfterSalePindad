@@ -55,4 +55,24 @@
             android:layout_height="wrap_content">
         </android.support.v7.widget.RecyclerView>
     </android.support.v4.widget.NestedScrollView>
+    <RelativeLayout
+        android:id="@+id/noInternet"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- TODO: Update blank fragment layout -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Can't Connect To Server"
+                android:textSize="32sp"
+                android:textColor="@color/cardview_shadow_start_color"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+
 </android.support.design.widget.CoordinatorLayout>
