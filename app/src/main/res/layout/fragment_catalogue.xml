@@ -178,6 +178,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true">
             <TextView
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="Can't Connect To Server"
