@@ -169,6 +169,7 @@
 
     <RelativeLayout
         android:id="@+id/noInternet"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -178,7 +179,6 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true">
             <TextView
-                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="Can't Connect To Server"
@@ -186,5 +186,4 @@
                 android:textColor="@color/cardview_shadow_start_color"/>
         </LinearLayout>
     </RelativeLayout>
-
 </android.support.design.widget.CoordinatorLayout>
