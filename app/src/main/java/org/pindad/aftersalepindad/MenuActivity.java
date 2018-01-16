@@ -184,7 +184,7 @@ public class MenuActivity extends BaseActivity implements NavigationView.OnNavig
                         mProgressBar.setVisibility(View.GONE);
                         CatalogueFragment catalogueFragment = new CatalogueFragment();
                         fragmentManager.beginTransaction()
-                                .add(R.id.catalogueContainer, catalogueFragment)
+                                .replace(R.id.catalogueContainer, catalogueFragment)
                                 .commit();
                     }else{
                         navigation.setVisibility(GONE);
