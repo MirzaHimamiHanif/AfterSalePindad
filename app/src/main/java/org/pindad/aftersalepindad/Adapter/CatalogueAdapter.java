@@ -51,7 +51,11 @@ public class CatalogueAdapter extends RecyclerView.Adapter<CatalogueAdapter.View
 
     @Override
     public int getItemCount() {
-        return listItems.size();
+        try {
+            return listItems.size();
+        }catch (Exception e){
+            return 0;
+        }
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

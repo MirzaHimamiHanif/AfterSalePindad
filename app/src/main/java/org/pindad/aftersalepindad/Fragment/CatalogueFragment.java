@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.MenuItemCompat;
+import android.support.v4.view.PagerAdapter;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
@@ -16,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,13 +38,14 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class CatalogueFragment extends Fragment implements SearchView.OnQueryTextListener {
+public class CatalogueFragment extends Fragment implements SearchView.OnQueryTextListener, View.OnClickListener {
     RecyclerView mRecyclerView;
     RecyclerView.LayoutManager mLayoutManager;
     RecyclerView.Adapter mAdapter;
     ApiInterface mApiInterface;
     RelativeLayout relativeLayout;
     List<ListCatalogue> KontakList;
+    LinearLayout mKBarang, mKKomponen, mAll;
     public CatalogueFragment(){
 
     }
@@ -50,8 +53,10 @@ public class CatalogueFragment extends Fragment implements SearchView.OnQueryTex
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
         View view = inflater.inflate(R.layout.fragment_catalogue, container, false);
+        mKBarang = (LinearLayout) view.findViewById(R.id.barang2);
+        mKKomponen = (LinearLayout) view.findViewById(R.id.komponen2);
+        mAll = (LinearLayout) view.findViewById(R.id.semua);
         relativeLayout = (RelativeLayout) view.findViewById(R.id.noInternet);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.catalogueRV);
         mRecyclerView.setHasFixedSize(true);
@@ -68,6 +73,9 @@ public class CatalogueFragment extends Fragment implements SearchView.OnQueryTex
                     appBarLayout.setExpanded(false);
             }
         });
+        mKBarang.setOnClickListener(this);
+        mKKomponen.setOnClickListener(this);
+        mAll.setOnClickListener(this);
         mLayoutManager  = new GridLayoutManager(getActivity(),2);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mApiInterface = ApiClient.getClient().create(ApiInterface.class);
@@ -106,16 +114,19 @@ public class CatalogueFragment extends Fragment implements SearchView.OnQueryTex
             return false;
         }
         List<ListCatalogue> filteredValues = new ArrayList<>();
-        for (int i=0; i<KontakList.size(); i++){
-            String data = KontakList.get(i).getNama();
-            if (data.toLowerCase().contains(newText.toLowerCase())) {
-                filteredValues.add(KontakList.get(i));
+        try {
+            for (int i=0; i<KontakList.size(); i++){
+                String data = KontakList.get(i).getNama();
+                if (data.toLowerCase().contains(newText.toLowerCase())) {
+                    filteredValues.add(KontakList.get(i));
+                }
+                mAdapter = new CatalogueAdapter(getContext(), filteredValues);
+                mRecyclerView.setAdapter(mAdapter);
             }
+        }catch (Exception e){
 
         }
 
-        mAdapter = new CatalogueAdapter(getContext(), filteredValues);
-        mRecyclerView.setAdapter(mAdapter);
 
         return false;
     }
@@ -125,4 +136,34 @@ public class CatalogueFragment extends Fragment implements SearchView.OnQueryTex
         mRecyclerView.setAdapter(mAdapter);
     }
 
+    @Override
+    public void onClick(View view) {
+        if (view.getId()!=R.id.semua) {
+            String x = null;
+            switch (view.getId()){
+                case R.id.barang2 :
+                    x = "barang";
+                    break;
+                case R.id.komponen2 :
+                    x = "komponen";
+                    break;
+            }
+            List<ListCatalogue> filteredValues = new ArrayList<>();
+            try {
+                for (int i=0; i<KontakList.size(); i++){
+                    String data = KontakList.get(i).getKategori();
+                    if (data.toLowerCase().equals(x)) {
+                        filteredValues.add(KontakList.get(i));
+                    }
+                    mAdapter = new CatalogueAdapter(getContext(), filteredValues);
+                    mRecyclerView.setAdapter(mAdapter);
+                }
+            }catch (Exception e){
+
+            }
+        }else{
+            mAdapter = new CatalogueAdapter(getContext(), KontakList);
+            mRecyclerView.setAdapter(mAdapter);
+        }
+    }
 }
