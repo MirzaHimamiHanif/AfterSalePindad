@@ -28,6 +28,7 @@ public class IsiDataFragment extends Fragment {
     private DatabaseReference mDatabase;
     private String mEmail, mUid;
     private static final int RC_SIGN_IN = 9001;
+
     public IsiDataFragment(){
 
     }

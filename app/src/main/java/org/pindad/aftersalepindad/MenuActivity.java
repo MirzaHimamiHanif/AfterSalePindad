@@ -255,7 +255,15 @@ public class MenuActivity extends BaseActivity implements NavigationView.OnNavig
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         drawerLayout.closeDrawer(GravityCompat.START);
-        if (item.getItemId() == R.id.navigation5) {
+        if (item.getItemId() == R.id.navigation1) {
+
+        }else if (item.getItemId() == R.id.navigation2) {
+
+        }else if (item.getItemId() == R.id.navigation3) {
+
+        }else if (item.getItemId() == R.id.navigation4) {
+
+        }else if (item.getItemId() == R.id.navigation5) {
             mAuth.signOut();
             Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(new ResultCallback<Status>() {
                 @Override
