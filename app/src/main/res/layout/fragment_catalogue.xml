@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appBar"
@@ -26,35 +27,148 @@
                 android:id="@+id/mToolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" app:layout_collapseMode="pin">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_margin="8dp"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:background="#FDD835"
-                    android:gravity="end">
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:layout_collapseMode="pin">
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_margin="8dp"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:background="#FDD835"-->
+                    <!--android:gravity="end">-->
                     <android.support.v7.widget.SearchView
                         android:id="@+id/search"
                         app:searchIcon="@drawable/ic_action_name"
                         app:closeIcon="@drawable/ic_close_name"
                         android:layout_gravity="center"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-                </LinearLayout>
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
+
+                <!--</LinearLayout>-->
             </android.support.v7.widget.Toolbar>
         </android.support.design.widget.CollapsingToolbarLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <ImageView
+                    android:id="@+id/category1"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/cerclebackgroundyello"
+                    app:srcCompat="@drawable/ic_android_black_24dp"
+                    tools:ignore="VectorDrawableCompat" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Kategory1"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/category2"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/cerclebackgroundyello"
+                    app:srcCompat="@drawable/ic_android_black_24dp"
+                    tools:ignore="VectorDrawableCompat" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Kategory2"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <ImageView
+                    android:id="@+id/category3"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/cerclebackgroundyello"
+                    app:srcCompat="@drawable/ic_android_black_24dp"
+                    tools:ignore="VectorDrawableCompat" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Kategory3"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <ImageView
+                    android:id="@+id/category4"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/cerclebackgroundyello"
+                    app:srcCompat="@drawable/ic_android_black_24dp"
+                    tools:ignore="VectorDrawableCompat" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Kategory4"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <ImageView
+                    android:id="@+id/category5"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/cerclebackgroundyello"
+                    app:srcCompat="@drawable/ic_android_black_24dp"
+                    tools:ignore="VectorDrawableCompat" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Kategory5"/>
+
+            </LinearLayout>
+        </LinearLayout>
     </android.support.design.widget.AppBarLayout>
+
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
         <android.support.v7.widget.RecyclerView
             android:id="@+id/catalogueRV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
         </android.support.v7.widget.RecyclerView>
     </android.support.v4.widget.NestedScrollView>
+
+
+
+
+
     <RelativeLayout
         android:id="@+id/noInternet"
         android:layout_width="match_parent"
@@ -72,7 +186,6 @@
                 android:textSize="32sp"
                 android:textColor="@color/cardview_shadow_start_color"/>
         </LinearLayout>
-
     </RelativeLayout>
 
 </android.support.design.widget.CoordinatorLayout>
