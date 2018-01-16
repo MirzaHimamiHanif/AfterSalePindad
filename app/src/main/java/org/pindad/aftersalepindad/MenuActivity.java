@@ -6,9 +6,11 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -48,7 +50,7 @@ import java.net.URLConnection;
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 
-public class MenuActivity extends BaseActivity {
+public class MenuActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     FragmentManager fragmentManager;
@@ -67,7 +69,9 @@ public class MenuActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
         mProgressBar = (ProgressBar) findViewById(R.id.progressBar1);
-
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawerL);
+        navigationView = (NavigationView) findViewById(R.id.navdraw);
+        navigationView.setNavigationItemSelectedListener(this);
         // [START config_signin]
         // Configure Google Sign In
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -88,6 +92,7 @@ public class MenuActivity extends BaseActivity {
         fragmentManager = getSupportFragmentManager();
         navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
     }
     // [START on_start_check_user]
     @Override
@@ -242,17 +247,27 @@ public class MenuActivity extends BaseActivity {
                 startActivity(i);
                 break;
             case "faq" :
-                mAuth.signOut();
-                Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(new ResultCallback<Status>() {
-                    @Override
-                    public void onResult(@NonNull Status status) {Intent intent = getIntent();
-                        overridePendingTransition(0, 0);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                        finish();
-                        overridePendingTransition(0, 0);
-                        startActivity(intent);
-                    }
-                });
+//
+                drawerLayout.openDrawer(GravityCompat.START);
         }
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        drawerLayout.closeDrawer(GravityCompat.START);
+        if (item.getItemId() == R.id.navigation5) {
+            mAuth.signOut();
+            Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(new ResultCallback<Status>() {
+                @Override
+                public void onResult(@NonNull Status status) {Intent intent = getIntent();
+                    overridePendingTransition(0, 0);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                    finish();
+                    overridePendingTransition(0, 0);
+                    startActivity(intent);
+                }
+            });
+        }
+        return false;
     }
 }

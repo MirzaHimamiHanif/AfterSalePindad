@@ -25,6 +25,11 @@
                 android:checkable="true"
                 android:icon="@drawable/ic_home_black_24dp"
                 android:title="@string/navigation_view_item_4" />
+            <item
+                android:id="@+id/navigation5"
+                android:checkable="true"
+                android:icon="@drawable/ic_home_black_24dp"
+                android:title="@string/navigation_view_item_5" />
         </menu>
     </item>
 </menu>
