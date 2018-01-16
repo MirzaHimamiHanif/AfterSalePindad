@@ -44,7 +44,7 @@ public class CatalogueFragment extends Fragment implements SearchView.OnQueryTex
     RecyclerView.Adapter mAdapter;
     ApiInterface mApiInterface;
     RelativeLayout relativeLayout;
-    List<ListCatalogue> KontakList;
+    List<ListCatalogue> KontakList, temp;
     LinearLayout mKBarang, mKKomponen, mAll;
     public CatalogueFragment(){
 
@@ -91,6 +91,7 @@ public class CatalogueFragment extends Fragment implements SearchView.OnQueryTex
                 relativeLayout.setVisibility(View.GONE);
                 mRecyclerView.setVisibility(View.VISIBLE);
                 KontakList = response.body();
+                temp = new ArrayList<>(KontakList);
                 mAdapter = new CatalogueAdapter(getContext(), KontakList);
                 mRecyclerView.setAdapter(mAdapter);
             }
@@ -150,18 +151,20 @@ public class CatalogueFragment extends Fragment implements SearchView.OnQueryTex
             }
             List<ListCatalogue> filteredValues = new ArrayList<>();
             try {
-                for (int i=0; i<KontakList.size(); i++){
-                    String data = KontakList.get(i).getKategori();
+                for (int i=0; i<temp.size(); i++){
+                    String data = temp.get(i).getKategori();
                     if (data.toLowerCase().equals(x)) {
-                        filteredValues.add(KontakList.get(i));
+                        filteredValues.add(temp.get(i));
                     }
-                    mAdapter = new CatalogueAdapter(getContext(), filteredValues);
+                    KontakList = filteredValues;
+                    mAdapter = new CatalogueAdapter(getContext(), KontakList);
                     mRecyclerView.setAdapter(mAdapter);
                 }
             }catch (Exception e){
 
             }
         }else{
+            KontakList = temp;
             mAdapter = new CatalogueAdapter(getContext(), KontakList);
             mRecyclerView.setAdapter(mAdapter);
         }
