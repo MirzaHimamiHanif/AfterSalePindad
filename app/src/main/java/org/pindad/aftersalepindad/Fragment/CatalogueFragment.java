@@ -29,18 +29,20 @@ import org.pindad.aftersalepindad.R;
 import org.pindad.aftersalepindad.Rest.ApiClient;
 import org.pindad.aftersalepindad.Rest.ApiInterface;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class CatalogueFragment extends Fragment {
+public class CatalogueFragment extends Fragment implements SearchView.OnQueryTextListener {
     RecyclerView mRecyclerView;
     RecyclerView.LayoutManager mLayoutManager;
     RecyclerView.Adapter mAdapter;
     ApiInterface mApiInterface;
     RelativeLayout relativeLayout;
+    List<ListCatalogue> KontakList;
     public CatalogueFragment(){
 
     }
@@ -55,6 +57,7 @@ public class CatalogueFragment extends Fragment {
         mRecyclerView.setHasFixedSize(true);
         setHasOptionsMenu(true);
         final SearchView searchView = (SearchView) view.findViewById(R.id.search);
+        searchView.setOnQueryTextListener(this);
         EditText editText = (EditText) searchView.findViewById(android.support.v7.appcompat.R.id.search_src_text);
         editText.setTextColor(getResources().getColor(R.color.black));
         editText.setHintTextColor(getResources().getColor(R.color.black));
@@ -79,7 +82,7 @@ public class CatalogueFragment extends Fragment {
                     response) {
                 relativeLayout.setVisibility(View.GONE);
                 mRecyclerView.setVisibility(View.VISIBLE);
-                List<ListCatalogue> KontakList = response.body();
+                KontakList = response.body();
                 mAdapter = new CatalogueAdapter(getContext(), KontakList);
                 mRecyclerView.setAdapter(mAdapter);
             }
@@ -92,4 +95,34 @@ public class CatalogueFragment extends Fragment {
             }
         });
     }
+    public boolean onQueryTextSubmit(String query) {
+        return true;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        if (newText == null || newText.trim().isEmpty()) {
+            resetSearch();
+            return false;
+        }
+        List<ListCatalogue> filteredValues = new ArrayList<>();
+        for (int i=0; i<KontakList.size(); i++){
+            String data = KontakList.get(i).getNama();
+            if (data.toLowerCase().contains(newText.toLowerCase())) {
+                filteredValues.add(KontakList.get(i));
+            }
+
+        }
+
+        mAdapter = new CatalogueAdapter(getContext(), filteredValues);
+        mRecyclerView.setAdapter(mAdapter);
+
+        return false;
+    }
+
+    public void resetSearch() {
+        mAdapter = new CatalogueAdapter(getContext(), KontakList);
+        mRecyclerView.setAdapter(mAdapter);
+    }
+
 }
