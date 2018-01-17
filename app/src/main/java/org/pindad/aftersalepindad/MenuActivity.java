@@ -53,7 +53,7 @@ import static android.view.View.VISIBLE;
 public class MenuActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout drawerLayout;
     NavigationView navigationView;
-    FragmentManager fragmentManager;
+    public FragmentManager fragmentManager;
     private static final String TAG = "GoogleActivity";
     private static final int RC_SIGN_IN = 9001;
     private String mEmail, mUid;
