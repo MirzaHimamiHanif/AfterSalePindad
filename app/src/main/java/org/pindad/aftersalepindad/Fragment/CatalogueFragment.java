@@ -45,7 +45,7 @@ public class CatalogueFragment extends Fragment implements SearchView.OnQueryTex
     ApiInterface mApiInterface;
     RelativeLayout relativeLayout;
     List<ListCatalogue> KontakList, temp;
-    LinearLayout mKBarang, mKKomponen, mAll;
+    LinearLayout mKSteering, mKCapstan, mKCombine, mKCrane, mKTraktor, mKExcava, mKGenerator, mAll;
     public CatalogueFragment(){
 
     }
@@ -54,8 +54,13 @@ public class CatalogueFragment extends Fragment implements SearchView.OnQueryTex
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_catalogue, container, false);
-        mKBarang = (LinearLayout) view.findViewById(R.id.barang2);
-        mKKomponen = (LinearLayout) view.findViewById(R.id.komponen2);
+        mKCrane = (LinearLayout) view.findViewById(R.id.crane);
+        mKTraktor = (LinearLayout) view.findViewById(R.id.traktor);
+        mKGenerator = (LinearLayout) view.findViewById(R.id.generator);
+        mKExcava = (LinearLayout) view.findViewById(R.id.excava);
+        mKSteering = (LinearLayout) view.findViewById(R.id.steering);
+        mKCapstan = (LinearLayout) view.findViewById(R.id.capstan);
+        mKCombine = (LinearLayout) view.findViewById(R.id.combine);
         mAll = (LinearLayout) view.findViewById(R.id.semua);
         relativeLayout = (RelativeLayout) view.findViewById(R.id.noInternet);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.catalogueRV);
@@ -73,8 +78,13 @@ public class CatalogueFragment extends Fragment implements SearchView.OnQueryTex
                     appBarLayout.setExpanded(false);
             }
         });
-        mKBarang.setOnClickListener(this);
-        mKKomponen.setOnClickListener(this);
+        mKCrane.setOnClickListener(this);
+        mKTraktor.setOnClickListener(this);
+        mKGenerator.setOnClickListener(this);
+        mKExcava.setOnClickListener(this);
+        mKSteering.setOnClickListener(this);
+        mKCapstan.setOnClickListener(this);
+        mKCombine.setOnClickListener(this);
         mAll.setOnClickListener(this);
         mLayoutManager  = new GridLayoutManager(getActivity(),2);
         mRecyclerView.setLayoutManager(mLayoutManager);
@@ -142,11 +152,26 @@ public class CatalogueFragment extends Fragment implements SearchView.OnQueryTex
         if (view.getId()!=R.id.semua) {
             String x = null;
             switch (view.getId()){
-                case R.id.barang2 :
-                    x = "barang";
+                case R.id.excava :
+                    x = "excava";
                     break;
-                case R.id.komponen2 :
-                    x = "komponen";
+                case R.id.crane :
+                    x = "crane";
+                    break;
+                case R.id.traktor :
+                    x = "traktor";
+                    break;
+                case R.id.steering :
+                    x = "steering";
+                    break;
+                case R.id.generator :
+                    x = "generator";
+                    break;
+                case R.id.capstan :
+                    x = "generator";
+                    break;
+                case R.id.combine :
+                    x = "combine";
                     break;
             }
             List<ListCatalogue> filteredValues = new ArrayList<>();
