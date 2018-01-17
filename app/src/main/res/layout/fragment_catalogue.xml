@@ -64,7 +64,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="8dp">
+                    android:padding="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginLeft="8dp">
 
                     <ImageView
                         android:id="@+id/category1"
@@ -74,7 +76,8 @@
                         app:srcCompat="@drawable/ic_android_black_24dp"
                         tools:ignore="VectorDrawableCompat" />
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Semua"/>
                 </LinearLayout>
@@ -85,7 +88,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="8dp"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginLeft="8dp">
 
                     <ImageView
                         android:id="@+id/category2"
@@ -95,7 +100,8 @@
                         app:srcCompat="@drawable/ic_android_black_24dp"
                         tools:ignore="VectorDrawableCompat" />
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Traktor"/>
                 </LinearLayout>
@@ -106,7 +112,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="8dp">
+                    android:padding="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginLeft="8dp">
 
                     <ImageView
                         android:id="@+id/category3"
@@ -116,7 +124,8 @@
                         app:srcCompat="@drawable/ic_android_black_24dp"
                         tools:ignore="VectorDrawableCompat" />
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Crane"/>
 
@@ -128,7 +137,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="8dp">
+                    android:padding="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginLeft="8dp">
 
                     <ImageView
                         android:id="@+id/category4"
@@ -138,7 +149,8 @@
                         app:srcCompat="@drawable/ic_android_black_24dp"
                         tools:ignore="VectorDrawableCompat" />
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Excava"/>
 
@@ -150,7 +162,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="8dp"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginLeft="8dp">
 
                     <ImageView
                         android:id="@+id/boat"
@@ -160,7 +174,8 @@
                         app:srcCompat="@drawable/ic_android_black_24dp"
                         tools:ignore="VectorDrawableCompat" />
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Combine"/>
                 </LinearLayout>
@@ -171,7 +186,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="8dp">
+                    android:padding="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginLeft="8dp">
 
                     <ImageView
                         android:id="@+id/category6"
@@ -181,7 +198,8 @@
                         app:srcCompat="@drawable/ic_android_black_24dp"
                         tools:ignore="VectorDrawableCompat" />
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Capstan"/>
 
@@ -193,7 +211,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="8dp">
+                    android:padding="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginLeft="8dp">
 
                     <ImageView
                         android:id="@+id/category7"
@@ -203,7 +223,8 @@
                         app:srcCompat="@drawable/ic_android_black_24dp"
                         tools:ignore="VectorDrawableCompat" />
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Generator"/>
 
@@ -214,7 +235,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="8dp">
+                    android:padding="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginLeft="8dp">
 
                     <ImageView
                         android:id="@+id/category8"
@@ -224,7 +247,8 @@
                         app:srcCompat="@drawable/ic_android_black_24dp"
                         tools:ignore="VectorDrawableCompat" />
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Steering"/>
 
