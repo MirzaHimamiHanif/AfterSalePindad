@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
+import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -42,6 +43,7 @@ public class CatalogueFragment extends Fragment implements SearchView.OnQueryTex
     RecyclerView mRecyclerView;
     RecyclerView.LayoutManager mLayoutManager;
     RecyclerView.Adapter mAdapter;
+    HorizontalScrollView horizontalScrollView;
     ApiInterface mApiInterface;
     RelativeLayout relativeLayout;
     List<ListCatalogue> KontakList, temp;
@@ -54,6 +56,8 @@ public class CatalogueFragment extends Fragment implements SearchView.OnQueryTex
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_catalogue, container, false);
+        horizontalScrollView = (HorizontalScrollView) view.findViewById(R.id.sHorizontal);
+        horizontalScrollView.setHorizontalScrollBarEnabled(false);
         mKCrane = (LinearLayout) view.findViewById(R.id.crane);
         mKTraktor = (LinearLayout) view.findViewById(R.id.traktor);
         mKGenerator = (LinearLayout) view.findViewById(R.id.generator);
