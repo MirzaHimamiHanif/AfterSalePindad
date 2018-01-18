@@ -3,6 +3,7 @@ package org.pindad.aftersalepindad.Rest;
 import org.pindad.aftersalepindad.Model.DataTicketing;
 import org.pindad.aftersalepindad.Model.GetCatalog;
 import org.pindad.aftersalepindad.Model.ListCatalogue;
+import org.pindad.aftersalepindad.Model.ListVideo;
 import org.pindad.aftersalepindad.Model.PostPulDelCatalogue;
 
 import java.util.List;
@@ -22,7 +23,10 @@ import retrofit2.http.PUT;
 public interface ApiInterface {
     @GET("barang")
     Call<List<ListCatalogue>> getCatalogue();
-    
+
+    @GET("video")
+    Call<List<ListVideo>> getVideo();
+
     @GET("ticketing")
     Call<List<DataTicketing>> getDataTicketing();
     @FormUrlEncoded

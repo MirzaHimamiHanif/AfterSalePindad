@@ -8,9 +8,7 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -39,13 +37,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import org.pindad.aftersalepindad.Fragment.CatalogueFragment;
-import org.pindad.aftersalepindad.Fragment.ImageFragment;
 import org.pindad.aftersalepindad.Fragment.IsiDataFragment;
 import org.pindad.aftersalepindad.Fragment.LoginFragment;
-import org.pindad.aftersalepindad.Fragment.NoInternetFragment;
-
-import java.net.URL;
-import java.net.URLConnection;
+import org.pindad.aftersalepindad.Fragment.VideoFragment;
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
@@ -240,11 +234,15 @@ public class MenuActivity extends BaseActivity implements NavigationView.OnNavig
                 CatalogueFragment catalogueFragment = new CatalogueFragment();
                 fragmentManager.beginTransaction()
                         .replace(R.id.catalogueContainer, catalogueFragment)
-                        .commit();Intent intent = getIntent();
+                        .commit();
                 break;
             case "video" :
-                Intent i = new  Intent(MenuActivity.this, VideoActivity.class);
-                startActivity(i);
+//                Intent i = new  Intent(MenuActivity.this, MenuVideoActivity.class);
+//                startActivity(i);
+                VideoFragment videoFragment = new VideoFragment();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.catalogueContainer, videoFragment)
+                        .commit();
                 break;
             case "faq" :
 //

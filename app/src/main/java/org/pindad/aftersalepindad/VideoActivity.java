@@ -21,18 +21,18 @@ public class VideoActivity extends YouTubeBaseActivity{
         super.onCreate(savedInstanceState);
         /** attaching layout xml **/
         setContentView(R.layout.activity_video);
-        youTubePlayerView = (YouTubePlayerView) findViewById(R.id.video);
-        onInitializedListener = new YouTubePlayer.OnInitializedListener() {
-            @Override
-            public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
-                youTubePlayer.loadVideo("c_OgbEbYLas");
-            }
-
-            @Override
-            public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
-
-            }
-        };
-        youTubePlayerView.initialize(KEY, onInitializedListener);
+//        youTubePlayerView = (YouTubePlayerView) findViewById(R.id.video);
+//        onInitializedListener = new YouTubePlayer.OnInitializedListener() {
+//            @Override
+//            public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
+//                youTubePlayer.loadVideo("c_OgbEbYLas");
+//            }
+//
+//            @Override
+//            public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
+//
+//            }
+//        };
+//        youTubePlayerView.initialize(KEY, onInitializedListener);
     }
 }
