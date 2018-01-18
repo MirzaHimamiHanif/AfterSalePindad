@@ -3,6 +3,7 @@ package org.pindad.aftersalepindad;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -85,7 +86,14 @@ public class BarangActivity extends AppCompatActivity {
                 root.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot snapshot) {
-                        showData(snapshot);
+
+//                        showData(snapshot);
+                        Uri path = Uri.parse("http://192.168.137.1/rest_ci/index.php/pdf");
+                        Intent intent = new Intent(Intent.ACTION_VIEW);
+                        intent.setDataAndType(
+                                path, "application/pdf");
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
                     }
 
                     @Override

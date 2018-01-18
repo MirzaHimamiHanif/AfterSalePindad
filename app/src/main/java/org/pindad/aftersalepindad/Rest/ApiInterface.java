@@ -22,7 +22,7 @@ import retrofit2.http.PUT;
 public interface ApiInterface {
     @GET("barang")
     Call<List<ListCatalogue>> getCatalogue();
-
+    
     @GET("ticketing")
     Call<List<DataTicketing>> getDataTicketing();
     @FormUrlEncoded
