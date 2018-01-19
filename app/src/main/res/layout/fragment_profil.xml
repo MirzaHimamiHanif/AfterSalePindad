@@ -1,13 +1,126 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="org.pindad.aftersalepindad.Fragment.ProfilFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Fragment PROFIL" />
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/profil_background"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@drawable/materialbackground"
+            android:scaleType="centerCrop"/>
+        <ImageView
+            android:id="@+id/profil_photo"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="123dp"
+            app:srcCompat="@drawable/cerclebackgroundyello"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="120dp"
+            tools:layout_editor_absoluteY="120dp" />
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="250dp"
+        tools:ignore="MissingConstraints">
+        <TextView
+            android:id="@+id/profil_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Username"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:paddingTop="16dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="24dp"
+            android:paddingLeft="24dp">
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                app:srcCompat="@drawable/ic_home_black_24dp"
+                android:tint="@color/colorPrimary"/>
+            <TextView
+                android:id="@+id/profil_office"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Perusahaan"
+                android:paddingLeft="8dp"
+                android:gravity="center_vertical"
+                android:textSize="24sp"
+                android:textStyle="italic" />
+        </LinearLayout>
 
-</FrameLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="8dp"
+            android:paddingLeft="24dp">
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                app:srcCompat="@drawable/ic_email_black_24dp"
+                android:tint="@color/colorPrimary"/>
+            <TextView
+                android:id="@+id/profil_email"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Email"
+                android:paddingLeft="8dp"
+                android:gravity="center_vertical"
+                android:textSize="24sp"
+                android:textStyle="italic"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="8dp"
+            android:paddingLeft="24dp">
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                app:srcCompat="@drawable/ic_phone_black_24dp"
+                android:tint="@color/colorPrimary"/>
+            <TextView
+                android:id="@+id/profil_phone"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Telepon"
+                android:paddingLeft="8dp"
+                android:gravity="center_vertical"
+                android:textSize="24sp"
+                android:textStyle="italic" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="32dp"
+            android:background="@color/colorPrimary"
+            android:text="Log Out"
+            android:textColor="@color/lightgray"
+            android:textStyle="bold"/>
+    </LinearLayout>
+</LinearLayout>
