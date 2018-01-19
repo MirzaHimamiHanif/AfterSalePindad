@@ -21,10 +21,6 @@ import org.pindad.aftersalepindad.R;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by ASUS on 10/01/2018.
- */
-
 public class CatalogueAdapter extends RecyclerView.Adapter<CatalogueAdapter.ViewHolder>{
     private List<ListCatalogue> listItems;
     private Context mContext;

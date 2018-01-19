@@ -1,9 +1,5 @@
 package org.pindad.aftersalepindad.Model;
 
-/**
- * Created by ASUS on 12/01/2018.
- */
-
 public class Profile {
     String email, nama, noTelp, perusahaan;
 

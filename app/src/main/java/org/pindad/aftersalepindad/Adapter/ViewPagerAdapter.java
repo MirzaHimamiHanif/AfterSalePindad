@@ -10,10 +10,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import org.pindad.aftersalepindad.R;
 
-/**
- * Created by ASUS on 11/01/2018.
- */
-
 public class ViewPagerAdapter extends PagerAdapter {
     private Context context;
     private LayoutInflater layoutInflater;

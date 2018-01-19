@@ -1,9 +1,5 @@
 package org.pindad.aftersalepindad;
 
-/**
- * Created by ASUS on 08/01/2018.
- */
-
 public class Data {
     private String nama;
     private String perusahaan;

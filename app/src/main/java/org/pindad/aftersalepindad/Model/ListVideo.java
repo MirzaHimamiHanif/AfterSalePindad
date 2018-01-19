@@ -2,9 +2,6 @@ package org.pindad.aftersalepindad.Model;
 
 import com.google.gson.annotations.SerializedName;
 
-/**
- * Created by WIDHIYANTO NUGROHO on 18/01/2018.
- */
 
 public class ListVideo {
 

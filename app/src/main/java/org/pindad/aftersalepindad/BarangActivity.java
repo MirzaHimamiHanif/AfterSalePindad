@@ -3,17 +3,13 @@ package org.pindad.aftersalepindad;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.Uri;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
-import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.FrameLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,26 +22,15 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import org.pindad.aftersalepindad.Adapter.CatalogueAdapter;
 import org.pindad.aftersalepindad.Adapter.ViewPagerAdapter;
-import org.pindad.aftersalepindad.Fragment.CatalogueFragment;
-import org.pindad.aftersalepindad.Fragment.IsiDataFragment;
 import org.pindad.aftersalepindad.Model.DataTicketing;
-import org.pindad.aftersalepindad.Model.ListCatalogue;
-import org.pindad.aftersalepindad.Model.PostPulDelCatalogue;
+import org.pindad.aftersalepindad.Model.PostTicketing;
 import org.pindad.aftersalepindad.Rest.ApiClient;
 import org.pindad.aftersalepindad.Rest.ApiInterface;
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
-import static android.view.View.GONE;
-import static android.view.View.VISIBLE;
 
 public class BarangActivity extends AppCompatActivity {
     private ScrollView sView;
@@ -87,13 +72,13 @@ public class BarangActivity extends AppCompatActivity {
                     @Override
                     public void onDataChange(DataSnapshot snapshot) {
 
-//                        showData(snapshot);
-                        Uri path = Uri.parse("http://192.168.137.1/rest_ci/index.php/pdf");
-                        Intent intent = new Intent(Intent.ACTION_VIEW);
-                        intent.setDataAndType(
-                                path, "application/pdf");
-                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(intent);
+                        showData(snapshot);
+//                        Uri path = Uri.parse(BASE_URL + "pdf");
+//                        Intent intent = new Intent(Intent.ACTION_VIEW);
+//                        intent.setDataAndType(
+//                                path, "application/pdf");
+//                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                        startActivity(intent);
                     }
 
                     @Override
@@ -114,7 +99,7 @@ public class BarangActivity extends AppCompatActivity {
         }
         dataTicketing.setNama_barang(mNama.getText().toString());
         dataTicketing.setPesan(comment.getText().toString());
-        Call<PostPulDelCatalogue> postCatalogue = mApiInterface.postCatalogue(
+        Call<PostTicketing> postCatalogue = mApiInterface.postCatalogue(
                 dataTicketing.getNama(),
                 dataTicketing.getPerusahaan(),
                 dataTicketing.getNoTelp(),
@@ -122,9 +107,9 @@ public class BarangActivity extends AppCompatActivity {
                 dataTicketing.getPesan(),
                 dataTicketing.getEmail()
         );
-        postCatalogue.enqueue(new Callback<PostPulDelCatalogue>() {
+        postCatalogue.enqueue(new Callback<PostTicketing>() {
             @Override
-            public void onResponse(Call<PostPulDelCatalogue> call, Response<PostPulDelCatalogue> response) {
+            public void onResponse(Call<PostTicketing> call, Response<PostTicketing> response) {
                 new AlertDialog.Builder(BarangActivity.this)
                         .setMessage("Pesan telah terkirim")
                         .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
@@ -141,7 +126,7 @@ public class BarangActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<PostPulDelCatalogue> call, Throwable t) {
+            public void onFailure(Call<PostTicketing> call, Throwable t) {
                 Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_LONG).show();
             }
         });

@@ -1,8 +1,6 @@
 package org.pindad.aftersalepindad.Model;
 
-/**
- * Created by ASUS on 12/01/2018.
- */
+
 
 public class DataTicketing {
     private String nama, perusahaan, noTelp, nama_barang, pesan, email;
