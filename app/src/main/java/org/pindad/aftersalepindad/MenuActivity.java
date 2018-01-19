@@ -37,8 +37,12 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import org.pindad.aftersalepindad.Fragment.CatalogueFragment;
+import org.pindad.aftersalepindad.Fragment.FaqFragment;
 import org.pindad.aftersalepindad.Fragment.IsiDataFragment;
 import org.pindad.aftersalepindad.Fragment.LoginFragment;
+import org.pindad.aftersalepindad.Fragment.PrivacyFragment;
+import org.pindad.aftersalepindad.Fragment.ProfilFragment;
+import org.pindad.aftersalepindad.Fragment.TermFragment;
 import org.pindad.aftersalepindad.Fragment.VideoFragment;
 
 import static android.view.View.GONE;
@@ -254,12 +258,32 @@ public class MenuActivity extends BaseActivity implements NavigationView.OnNavig
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         drawerLayout.closeDrawer(GravityCompat.START);
         if (item.getItemId() == R.id.navigation1) {
+            ProfilFragment profilFragment = new ProfilFragment();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.catalogueContainer, profilFragment)
+                    .commit();
+            return false;
 
         }else if (item.getItemId() == R.id.navigation2) {
+            FaqFragment faqFragment = new FaqFragment();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.catalogueContainer, faqFragment)
+                    .commit();
+            return false;
 
         }else if (item.getItemId() == R.id.navigation3) {
+            TermFragment termFragment = new TermFragment();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.catalogueContainer, termFragment)
+                    .commit();
+            return false;
 
         }else if (item.getItemId() == R.id.navigation4) {
+            PrivacyFragment privacyFragment = new PrivacyFragment();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.catalogueContainer, privacyFragment)
+                    .commit();
+            return false;
 
         }else if (item.getItemId() == R.id.navigation5) {
             mAuth.signOut();
