@@ -265,11 +265,13 @@ public class MenuActivity extends BaseActivity implements NavigationView.OnNavig
             return false;
 
         }else if (item.getItemId() == R.id.navigation2) {
-            FaqFragment faqFragment = new FaqFragment();
-            fragmentManager.beginTransaction()
-                    .replace(R.id.catalogueContainer, faqFragment)
-                    .commit();
-            return false;
+//            FaqFragment faqFragment = new FaqFragment();
+//            fragmentManager.beginTransaction()
+//                    .replace(R.id.catalogueContainer, faqFragment)
+//                    .commit();
+//            return false;
+            Intent i = new  Intent(MenuActivity.this, FaqActivity.class);
+            startActivity(i);
 
         }else if (item.getItemId() == R.id.navigation3) {
             TermFragment termFragment = new TermFragment();
