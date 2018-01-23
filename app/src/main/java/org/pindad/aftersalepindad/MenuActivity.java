@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ProgressBar;
 
+
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -221,11 +222,11 @@ public class MenuActivity extends BaseActivity implements NavigationView.OnNavig
                    cek("catalogue");
                     return true;
                 case R.id.navigation_dashboard:
-                    cek("video");
+                    cek("faq");
 
                     return true;
                 case R.id.navigation_notifications:
-                    cek("faq");
+                    cek("menu");
 
                     return true;
             }
@@ -240,15 +241,15 @@ public class MenuActivity extends BaseActivity implements NavigationView.OnNavig
                         .replace(R.id.catalogueContainer, catalogueFragment)
                         .commit();
                 break;
-            case "video" :
+            case "faq" :
 //                Intent i = new  Intent(MenuActivity.this, MenuVideoActivity.class);
 //                startActivity(i);
-                VideoFragment videoFragment = new VideoFragment();
+                FaqFragment faqFragment = new FaqFragment();
                 fragmentManager.beginTransaction()
-                        .replace(R.id.catalogueContainer, videoFragment)
+                        .replace(R.id.catalogueContainer, faqFragment)
                         .commit();
                 break;
-            case "faq" :
+            case "menu" :
                 drawerLayout.openDrawer(GravityCompat.START);
         }
     }

@@ -1,13 +1,79 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="org.pindad.aftersalepindad.Fragment.PrivacyFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Fragment PRIVACY" />
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/profil_background"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:background="@drawable/materialbackground"
+            android:scaleType="centerCrop"/>
 
-</FrameLayout>
+        <TextView
+            android:id="@+id/term_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="Privacy and Policy"
+            android:textSize="28dp"
+            android:textColor="@color/backgroundcolor"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="A Terms of Service agreement helps you set out the rules and guidelines that your users or visitors must agree to in order to use your website or mobile app."
+                android:textAlignment="center"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Informing users that your website, its content, the logo, etc. is your property and it’s protected by copyright laws." />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Informing users that you can disable their accounts (if users can create an account with you) or disable access to your website in case of abuses, e.g. spamming other users" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Setting the community’s guidelines, if your website/mobile apps have users that can create content which is shared by other users. For example: banning users to upload or share content that isn’t theirs or not allowing users to share content found on your website/mobile app without an attribution link, etc." />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="How users can use the content you’ve created or use the content other users created on your website/mobile app" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Who owns the right to content created by users on your platform" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="What happens if a third party finds protected works on your platform that are copyright infringements" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:paddingTop="16dp"
+                android:src="@drawable/materialbackground"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

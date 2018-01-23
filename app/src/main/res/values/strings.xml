@@ -16,8 +16,8 @@
     <string name="desc_google_icon">Google Logo</string>
     <string name="title_activity_menu">MenuActivity</string>
     <string name="title_home">Catalogue</string>
-    <string name="title_dashboard">Video</string>
-    <string name="title_notifications">FAQ</string>
+    <string name="title_dashboard">Faq</string>
+    <string name="title_notifications">More</string>
     <string name="action_search">Search</string>
 
     <!-- TODO: Remove or change this placeholder text -->
