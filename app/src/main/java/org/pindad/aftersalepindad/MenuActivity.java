@@ -263,31 +263,21 @@ public class MenuActivity extends BaseActivity implements NavigationView.OnNavig
                     .replace(R.id.catalogueContainer, profilFragment)
                     .commit();
             return false;
-
         }else if (item.getItemId() == R.id.navigation2) {
-            FaqFragment faqFragment = new FaqFragment();
-            fragmentManager.beginTransaction()
-                    .replace(R.id.catalogueContainer, faqFragment)
-                    .commit();
-//            Intent i = new  Intent(MenuActivity.this, FaqActivity.class);
-//            startActivity(i);
-
-            return false;
-        }else if (item.getItemId() == R.id.navigation3) {
             TermFragment termFragment = new TermFragment();
             fragmentManager.beginTransaction()
                     .replace(R.id.catalogueContainer, termFragment)
                     .commit();
             return false;
 
-        }else if (item.getItemId() == R.id.navigation4) {
+        }else if (item.getItemId() == R.id.navigation3) {
             PrivacyFragment privacyFragment = new PrivacyFragment();
             fragmentManager.beginTransaction()
                     .replace(R.id.catalogueContainer, privacyFragment)
                     .commit();
             return false;
 
-        }else if (item.getItemId() == R.id.navigation5) {
+        }else if (item.getItemId() == R.id.navigation4) {
             mAuth.signOut();
             Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(new ResultCallback<Status>() {
                 @Override
