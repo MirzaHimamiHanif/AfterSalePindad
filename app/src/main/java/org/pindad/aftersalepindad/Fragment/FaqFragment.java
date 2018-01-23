@@ -125,11 +125,11 @@ public class FaqFragment extends Fragment   {
         ques2.add("Jawaban 2.5");
 
         List<String> ques3 = new ArrayList<String>();
-        ques1.add("Jawaban 3.1");
-        ques1.add("Jawaban 3.2");
-        ques1.add("Jawaban 3.3");
-        ques1.add("Jawaban 3.4");
-        ques1.add("Jawaban 3.5");
+        ques3.add("Jawaban 3.1");
+        ques3.add("Jawaban 3.2");
+        ques3.add("Jawaban 3.3");
+        ques3.add("Jawaban 3.4");
+        ques3.add("Jawaban 3.5");
 
         List<String> ques4 = new ArrayList<String>();
         ques4.add("Jawaban 4.1");
