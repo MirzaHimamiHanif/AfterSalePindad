@@ -150,9 +150,9 @@ public class FaqFragment extends Fragment   {
 
         listDataChild.put(listDataHeader.get(0), ques1); // Header, Child data
         listDataChild.put(listDataHeader.get(1), ques2);
-        listDataChild.put(listDataHeader.get(1), ques3);
-        listDataChild.put(listDataHeader.get(1), ques4);
-        listDataChild.put(listDataHeader.get(1), ques5);
+        listDataChild.put(listDataHeader.get(2), ques3);
+        listDataChild.put(listDataHeader.get(3), ques4);
+        listDataChild.put(listDataHeader.get(4), ques5);
     }
 
 
