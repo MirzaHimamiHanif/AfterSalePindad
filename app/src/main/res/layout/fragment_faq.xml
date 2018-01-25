@@ -11,6 +11,14 @@
         android:orientation="vertical"
         android:padding="16dp">
 
+        <VideoView
+            android:id="@+id/faqVideo"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:gravity="center"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp"/>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

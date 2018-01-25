@@ -45,6 +45,7 @@ import org.pindad.aftersalepindad.Fragment.PrivacyFragment;
 import org.pindad.aftersalepindad.Fragment.ProfilFragment;
 import org.pindad.aftersalepindad.Fragment.TermFragment;
 import org.pindad.aftersalepindad.Fragment.VideoFragment;
+import org.pindad.aftersalepindad.Model.Video;
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
@@ -269,14 +270,18 @@ public class MenuActivity extends BaseActivity implements NavigationView.OnNavig
                     .replace(R.id.catalogueContainer, termFragment)
                     .commit();
             return false;
-
         }else if (item.getItemId() == R.id.navigation3) {
             PrivacyFragment privacyFragment = new PrivacyFragment();
             fragmentManager.beginTransaction()
                     .replace(R.id.catalogueContainer, privacyFragment)
                     .commit();
             return false;
-
+        }else if (item.getItemId() == R.id.navigation5) {
+            VideoFragment videoFragment = new VideoFragment();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.catalogueContainer, videoFragment)
+                    .commit();
+            return false;
         }else if (item.getItemId() == R.id.navigation4) {
             mAuth.signOut();
             Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(new ResultCallback<Status>() {

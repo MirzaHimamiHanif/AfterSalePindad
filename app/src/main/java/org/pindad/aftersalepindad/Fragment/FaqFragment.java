@@ -3,13 +3,16 @@ package org.pindad.aftersalepindad.Fragment;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
+import android.widget.MediaController;
 import android.widget.Toast;
+import android.widget.VideoView;
 
 import org.pindad.aftersalepindad.Adapter.ExpandableListAdapter;
 import org.pindad.aftersalepindad.R;
@@ -35,7 +38,22 @@ public class FaqFragment extends Fragment   {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
         View rootView = inflater.inflate(R.layout.fragment_faq, container, false);
+
+        MediaController mc = new MediaController(getActivity());
+
+        String path="http://www.ted.com/talks/download/video/8584/talk/761";
+        String path1="http://api.pindad.com/as/files/video/video2.MP4";
+
+        Uri uri=Uri.parse(path1);
+
+        VideoView video=(VideoView) rootView.findViewById(R.id.faqVideo);
+        video.setVideoURI(uri);
+        video.setMediaController(mc);
+        video.start();
+
+
         expListView = (ExpandableListView) rootView.findViewById(R.id.lvExp);
         prepareListData();
         listAdapter = new ExpandableListAdapter(getActivity(), listDataHeader, listDataChild);
@@ -49,9 +67,9 @@ public class FaqFragment extends Fragment   {
             @Override
             public boolean onGroupClick(ExpandableListView parent, View v,
                                         int groupPosition, long id) {
-                // Toast.makeText(getApplicationContext(),
-                // "Group Clicked " + listDataHeader.get(groupPosition),
-                // Toast.LENGTH_SHORT).show();
+//                 Toast.makeText(getActivity(),
+//                 "Group Clicked " + listDataHeader.get(groupPosition),
+//                 Toast.LENGTH_SHORT).show();
                 return false;
             }
         });
@@ -145,7 +163,6 @@ public class FaqFragment extends Fragment   {
         ques5.add("Jawaban 5.3");
         ques5.add("Jawaban 5.4");
         ques5.add("Jawaban 5.5");
-
 
 
         listDataChild.put(listDataHeader.get(0), ques1); // Header, Child data

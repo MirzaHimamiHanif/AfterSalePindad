@@ -2,6 +2,7 @@ package org.pindad.aftersalepindad.Adapter;
 
 import android.content.Context;
 import android.graphics.Typeface;
+import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,8 +33,8 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         this._listDataChild = listChildData;
     }
 
-    public ExpandableListAdapter(FaqFragment faqFragment, List<String> listDataHeader, HashMap<String, List<String>> listDataChild) {
-    }
+//    public ExpandableListAdapter(FragmentActivity faqFragment, List<String> listDataHeader, HashMap<String, List<String>> listDataChild) {
+//    }
 
     @Override
     public Object getChild(int groupPosition, int childPosititon) {
@@ -117,6 +118,11 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     public boolean isChildSelectable(int groupPosition, int childPosition) {
         return true;
     }
+
+
+
+
+
 }
 
 

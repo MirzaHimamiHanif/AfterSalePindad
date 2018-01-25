@@ -191,7 +191,6 @@
                         android:layout_height="wrap_content"
                         android:text="Capstan"
                         android:layout_gravity="center"/>
-
                 </LinearLayout>
 
                 <LinearLayout
@@ -236,7 +235,6 @@
                         android:layout_height="wrap_content"
                         android:text="Steering"
                         android:layout_gravity="center"/>
-
                 </LinearLayout>
             </LinearLayout>
         </HorizontalScrollView>

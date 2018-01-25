@@ -18,13 +18,13 @@
             android:layout_height="match_parent"
             android:gravity="center">
 
-            <ImageView
-                android:id="@+id/imageVideo"
+            <VideoView
+                android:id="@+id/faqVideo"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/lightgray"
-                app:srcCompat="@drawable/ic_android_black_24dp"
-                tools:ignore="VectorDrawableCompat" />
+                android:layout_height="200dp"
+                android:gravity="center"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp"/>
         </LinearLayout>
 
         <LinearLayout
