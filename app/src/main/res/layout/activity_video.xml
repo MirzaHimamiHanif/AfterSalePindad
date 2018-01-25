@@ -2,65 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="org.pindad.aftersalepindad.VideoActivity">
 
-    <ScrollView
-        android:id="@+id/ScrollView02"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-        <LinearLayout
-            android:id="@+id/LinearLayout02"
-            android:layout_margin="16dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+    <ListView
+        android:id="@+id/videoListView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
-            <TextView
-                android:id="@+id/namaItem"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:padding="8dp"
-                android:text="Video"
-                android:textSize="32sp" />
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="1dp"
-                android:layout_marginTop="15dp"
-                android:background="@color/colorPrimaryDark" />
-
-            <com.google.android.youtube.player.YouTubePlayerView
-                android:id="@+id/video"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-            <!--<VideoView-->
-                <!--android:id="@+id/dVideo"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="match_parent"-->
-                <!--/>-->
-
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="3dp"
-                android:background="@color/colorPrimaryDark" />
-
-            <TextView
-                android:id="@+id/captionVideo"
-                android:layout_width="match_parent"
-                android:layout_height="44dp"
-                android:layout_marginTop="15dp"
-                android:text="Caption"
-                android:paddingLeft="15dp"
-                android:textSize="15sp" />
-
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="3dp"
-                android:layout_marginTop="15dp"
-                android:background="@color/colorPrimaryDark" />
-        </LinearLayout>
-    </ScrollView>
 </LinearLayout>

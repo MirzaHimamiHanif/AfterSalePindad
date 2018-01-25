@@ -277,11 +277,12 @@ public class MenuActivity extends BaseActivity implements NavigationView.OnNavig
                     .commit();
             return false;
         }else if (item.getItemId() == R.id.navigation5) {
-            VideoFragment videoFragment = new VideoFragment();
-            fragmentManager.beginTransaction()
-                    .replace(R.id.catalogueContainer, videoFragment)
-                    .commit();
-            return false;
+//            VideoFragment videoFragment = new VideoFragment();
+//            fragmentManager.beginTransaction()
+//                    .replace(R.id.catalogueContainer, videoFragment)
+//                    .commit();
+            Intent i = new  Intent(MenuActivity.this, VideoActivity.class);
+            startActivity(i);
         }else if (item.getItemId() == R.id.navigation4) {
             mAuth.signOut();
             Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(new ResultCallback<Status>() {

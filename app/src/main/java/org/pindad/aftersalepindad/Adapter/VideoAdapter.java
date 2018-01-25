@@ -34,7 +34,6 @@ public class VideoAdapter extends ArrayAdapter<Video> {
 
     public VideoAdapter(@NonNull Context context, @NonNull List<Video> objects) {
         super(context, R.layout.video_view, objects);
-
         mContext = context;
         mVideos = objects;
     }
@@ -50,7 +49,7 @@ public class VideoAdapter extends ArrayAdapter<Video> {
             holder = new ViewHolder();
 
             holder.videoView = (VideoView) convertView
-                    .findViewById(R.id.faqVideo);
+                    .findViewById(R.id.videoView);
 
             convertView.setTag(holder);
         } else {
