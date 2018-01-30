@@ -176,4 +176,7 @@ public class MenuActivity extends BaseActivity implements NavigationView.OnNavig
         }
         return false;
     }
+
+    public void displayMessage(String s) {
+    }
 }
