@@ -5,46 +5,36 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 public class ListCatalogue {
-    @SerializedName("nama")
-    private String nama;
-    @SerializedName("deskripsi")
-    private String deskripsi;
-    @SerializedName("kategori")
-    private String kategori;
+    @SerializedName("jenis_produk")
+    private String jenis_produk;
+    @SerializedName("tipe_produk")
+    private String tipe_produk;
     private int imageUrl;
 
     public ListCatalogue(){
 
     }
-    public ListCatalogue(String nama, String deskripsi, String kategori, int imageUrl) {
-        this.nama = nama;
-        this.deskripsi = deskripsi;
-        this.kategori = kategori;
+
+    public ListCatalogue(String jenis_produk, String tipe_produk, int imageUrl) {
+        this.jenis_produk = jenis_produk;
+        this.tipe_produk = tipe_produk;
         this.imageUrl = imageUrl;
     }
 
-    public String getNama() {
-        return nama;
+    public String getJenis_produk() {
+        return jenis_produk;
     }
 
-    public void setNama(String nama) {
-        this.nama = nama;
+    public void setJenis_produk(String jenis_produk) {
+        this.jenis_produk = jenis_produk;
     }
 
-    public String getDeskripsi() {
-        return deskripsi;
+    public String getTipe_produk() {
+        return tipe_produk;
     }
 
-    public void setDeskripsi(String deskripsi) {
-        this.deskripsi = deskripsi;
-    }
-
-    public String getKategori() {
-        return kategori;
-    }
-
-    public void setKategori(String kategori) {
-        this.kategori = kategori;
+    public void setTipe_produk(String tipe_produk) {
+        this.tipe_produk = tipe_produk;
     }
 
     public int getImageUrl() {

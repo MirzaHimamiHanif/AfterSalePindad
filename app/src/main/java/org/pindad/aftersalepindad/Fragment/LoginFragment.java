@@ -1,60 +1,71 @@
 package org.pindad.aftersalepindad.Fragment;
 
-import android.app.Activity;
-import android.app.FragmentManager;
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
-
-import com.firebase.ui.auth.AuthUI;
-import com.google.android.gms.common.SignInButton;
+import android.widget.Toast;
 
 import org.pindad.aftersalepindad.MenuActivity;
+import org.pindad.aftersalepindad.Model.Customer;
 import org.pindad.aftersalepindad.R;
+import org.pindad.aftersalepindad.Rest.ApiClient;
+import org.pindad.aftersalepindad.Rest.ApiInterface;
+import org.pindad.aftersalepindad.SaveSharedPreference;
 
-import java.util.Arrays;
-import java.util.EventListener;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class LoginFragment extends Fragment {
-    private static final int RC_SIGN_IN = 123;
 
+    ApiInterface mApiInterface;
+    private EditText username, password;
+    List<Customer> KontakList;
     public LoginFragment(){
 
     }
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_login, container, false);
-        SignInButton signInButton = (SignInButton) rootView.findViewById(R.id.sign_in_button);
-        Button signInEmail = (Button) rootView.findViewById(R.id.signInEmail);
-        TextView textGoogle = (TextView) signInButton.getChildAt(0);
-        textGoogle.setText("Sign In With Google");
         final TextView textView = (TextView) rootView.findViewById(R.id.title_text);
-        signInButton.setOnClickListener(new View.OnClickListener() {
+        username = (EditText) rootView.findViewById(R.id.username);
+        password = (EditText) rootView.findViewById(R.id.password);
+        Button login = (Button) rootView.findViewById(R.id.login);
+        mApiInterface = ApiClient.getClient().create(ApiInterface.class);
+        login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                MenuActivity activity = (MenuActivity) getActivity();
-                activity.signIn();
-            }
-        });
-        signInEmail.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivityForResult(
-                        AuthUI.getInstance()
-                                .createSignInIntentBuilder()
-                                .setAvailableProviders(Arrays.asList(new AuthUI.IdpConfig.Builder(AuthUI.EMAIL_PROVIDER).build()
-                                ))
-                                .build(),
-                        RC_SIGN_IN);
+                refresh();
             }
         });
         return rootView;
+    }
+    public void refresh() {
+        Call<List<Customer>> kontakCall = mApiInterface.putLogin(username.getText().toString(), password.getText().toString());
+        kontakCall.enqueue(new Callback<List<Customer>>() {
+            @Override
+            public void onResponse(Call<List<Customer>> call, Response<List<Customer>> response) {
+                KontakList = response.body();
+                try{
+                    SaveSharedPreference.setUserName(getActivity(), username.getText().toString(), KontakList.get(0).getId_customer());
+                    MenuActivity activity = (MenuActivity) getActivity();
+                    activity.signIn();
+                }catch (Exception e){
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Customer>> call, Throwable t) {
+                Toast.makeText(getActivity(), t.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
     }
 }

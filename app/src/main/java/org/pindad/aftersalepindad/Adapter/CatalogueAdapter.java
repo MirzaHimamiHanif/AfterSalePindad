@@ -40,8 +40,8 @@ public class CatalogueAdapter extends RecyclerView.Adapter<CatalogueAdapter.View
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.nameCatalogue.setText(listItems.get(position).getNama());
-        holder.description.setText(listItems.get(position).getDeskripsi());
+        holder.nameCatalogue.setText(listItems.get(position).getTipe_produk());
+        holder.description.setText(listItems.get(position).getJenis_produk());
         holder.image.setImageResource(R.drawable.ic_android_black_24dp);
     }
 

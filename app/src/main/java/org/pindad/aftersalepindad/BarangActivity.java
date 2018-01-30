@@ -22,6 +22,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.pindad.aftersalepindad.Adapter.SimpleMail;
 import org.pindad.aftersalepindad.Adapter.ViewPagerAdapter;
 import org.pindad.aftersalepindad.Model.DataTicketing;
 import org.pindad.aftersalepindad.Model.PostTicketing;
@@ -31,6 +32,8 @@ import org.pindad.aftersalepindad.Rest.ApiInterface;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import static android.widget.Toast.LENGTH_LONG;
 
 public class BarangActivity extends AppCompatActivity {
     private ScrollView sView;
@@ -67,68 +70,87 @@ public class BarangActivity extends AppCompatActivity {
         mKirim.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DatabaseReference root = FirebaseDatabase.getInstance().getReference();
-                root.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot snapshot) {
-
-                        showData(snapshot);
-//                        Uri path = Uri.parse(BASE_URL + "pdf");
-//                        Intent intent = new Intent(Intent.ACTION_VIEW);
-//                        intent.setDataAndType(
-//                                path, "application/pdf");
-//                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//                        startActivity(intent);
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-
-                    }
-                });
+//                DatabaseReference root = FirebaseDatabase.getInstance().getReference();
+//                root.addListenerForSingleValueEvent(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(DataSnapshot snapshot) {
+//
+//                        showData(snapshot);
+////                        Uri path = Uri.parse(BASE_URL + "pdf");
+////                        Intent intent = new Intent(Intent.ACTION_VIEW);
+////                        intent.setDataAndType(
+////                                path, "application/pdf");
+////                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+////                        startActivity(intent);
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(DatabaseError databaseError) {
+//
+//                    }
+//                });
+            showData();
             }
         });
     }
-    private void showData(DataSnapshot dataSnapshot) {
-        final DataTicketing dataTicketing = new DataTicketing();
-        for(DataSnapshot ds : dataSnapshot.getChildren()){
-            dataTicketing.setEmail(ds.child(mUid).getValue(DataTicketing.class).getEmail()); //set the email
-            dataTicketing.setNama(ds.child(mUid).getValue(DataTicketing.class).getNama()); //set the name
-            dataTicketing.setNoTelp(ds.child(mUid).getValue(DataTicketing.class).getNoTelp());
-            dataTicketing.setPerusahaan(ds.child(mUid).getValue(DataTicketing.class).getPerusahaan());
-        }
-        dataTicketing.setNama_barang(mNama.getText().toString());
-        dataTicketing.setPesan(comment.getText().toString());
-        Call<PostTicketing> postCatalogue = mApiInterface.postCatalogue(
-                dataTicketing.getNama(),
-                dataTicketing.getPerusahaan(),
-                dataTicketing.getNoTelp(),
-                dataTicketing.getNama_barang(),
-                dataTicketing.getPesan(),
-                dataTicketing.getEmail()
-        );
-        postCatalogue.enqueue(new Callback<PostTicketing>() {
-            @Override
-            public void onResponse(Call<PostTicketing> call, Response<PostTicketing> response) {
-                new AlertDialog.Builder(BarangActivity.this)
-                        .setMessage("Pesan telah terkirim")
-                        .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                Intent intent = getIntent();
-                                overridePendingTransition(0, 0);
-                                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                                finish();
-                                overridePendingTransition(0, 0);
-                                startActivity(intent);
-                            }
-                        }).show();
-            }
+    private void showData() {
+        try {
+            String to = "zamif07@gmail.com";
+            String subject = "Tes";
+            String message = comment.getText().toString();
+            //everything is filled out
+            //send email
+            new SimpleMail().sendEmail(to, subject, message);
+            new AlertDialog.Builder(BarangActivity.this)
+                    .setMessage("Pesan telah terkirim")
+                    .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            Intent intent = getIntent();
+                            overridePendingTransition(0, 0);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                            finish();
+                            overridePendingTransition(0, 0);
+                            startActivity(intent);
+                        }
+                    }).show();
+        } catch (Exception e) {
+            e.printStackTrace();
 
-            @Override
-            public void onFailure(Call<PostTicketing> call, Throwable t) {
-                Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_LONG).show();
-            }
-        });
+        }
+
+
+//        Call<PostTicketing> postCatalogue = mApiInterface.postCatalogue(
+//                dataTicketing.getNama(),
+//                dataTicketing.getPerusahaan(),
+//                dataTicketing.getNoTelp(),
+//                dataTicketing.getNama_barang(),
+//                dataTicketing.getPesan(),
+//                dataTicketing.getEmail()
+//        );
+//        postCatalogue.enqueue(new Callback<PostTicketing>() {
+//            @Override
+//            public void onResponse(Call<PostTicketing> call, Response<PostTicketing> response) {
+//                new AlertDialog.Builder(BarangActivity.this)
+//                        .setMessage("Pesan telah terkirim")
+//                        .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialogInterface, int i) {
+//                                Intent intent = getIntent();
+//                                overridePendingTransition(0, 0);
+//                                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+//                                finish();
+//                                overridePendingTransition(0, 0);
+//                                startActivity(intent);
+//                            }
+//                        }).show();
+//            }
+//
+//            @Override
+//            public void onFailure(Call<PostTicketing> call, Throwable t) {
+//                Toast.makeText(getApplicationContext(), "Error", LENGTH_LONG).show();
+//            }
+//        });
     }
 }
+

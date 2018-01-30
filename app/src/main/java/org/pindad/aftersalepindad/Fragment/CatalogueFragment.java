@@ -120,7 +120,7 @@ public class CatalogueFragment extends Fragment implements SearchView.OnQueryTex
         List<ListCatalogue> filteredValues = new ArrayList<>();
         try {
             for (int i=0; i<KontakList.size(); i++){
-                String data = KontakList.get(i).getNama();
+                String data = KontakList.get(i).getTipe_produk();
                 if (data.toLowerCase().contains(newText.toLowerCase())) {
                     filteredValues.add(KontakList.get(i));
                 }
@@ -170,7 +170,7 @@ public class CatalogueFragment extends Fragment implements SearchView.OnQueryTex
             List<ListCatalogue> filteredValues = new ArrayList<>();
             try {
                 for (int i=0; i<temp.size(); i++){
-                    String data = temp.get(i).getKategori();
+                    String data = temp.get(i).getJenis_produk();
                     if (data.toLowerCase().equals(x)) {
                         filteredValues.add(temp.get(i));
                     }
