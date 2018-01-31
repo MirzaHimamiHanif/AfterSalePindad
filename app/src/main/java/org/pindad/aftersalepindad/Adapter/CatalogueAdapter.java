@@ -13,8 +13,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.pindad.aftersalepindad.BarangActivity;
-import org.pindad.aftersalepindad.BaseActivity;
-import org.pindad.aftersalepindad.MenuActivity;
 import org.pindad.aftersalepindad.Model.ListCatalogue;
 import org.pindad.aftersalepindad.R;
 

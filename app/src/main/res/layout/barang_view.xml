@@ -26,7 +26,6 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:textStyle="bold"
-                android:gravity="center"
                 android:layout_marginTop="10dp"
                 android:text="Banking"/>
             <View
