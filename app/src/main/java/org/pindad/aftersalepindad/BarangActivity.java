@@ -3,11 +3,13 @@ package org.pindad.aftersalepindad;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -35,6 +37,9 @@ import org.pindad.aftersalepindad.Rest.ApiInterface;
 
 import java.io.File;
 import java.util.List;
+
+import javax.mail.AuthenticationFailedException;
+import javax.mail.MessagingException;
 
 import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
@@ -122,31 +127,9 @@ public class BarangActivity extends AppCompatActivity {
         });
     }
     private void showData() {
-        try {
-            String to = "zamif07@gmail.com";
-            String subject = "Tes";
-            String message = comment.getText().toString();
-            //everything is filled out
-            //send email
-            new SimpleMail().sendEmail(to, subject, message);
-            new AlertDialog.Builder(BarangActivity.this)
-                    .setMessage("Pesan telah terkirim")
-                    .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            Intent intent = getIntent();
-                            overridePendingTransition(0, 0);
-                            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                            finish();
-                            overridePendingTransition(0, 0);
-                            startActivity(intent);
-                        }
-                    }).show();
-        } catch (Exception e) {
-            e.printStackTrace();
-
-        }
-
+        SendEmailAsyncTask email = new SendEmailAsyncTask();
+        email.m.setBody(comment.getText().toString());
+        email.execute();
 //        Call<PostTicketing> postCatalogue = mApiInterface.postCatalogue(
 //                dataTicketing.getNama(),
 //                dataTicketing.getPerusahaan(),
@@ -225,6 +208,31 @@ public class BarangActivity extends AppCompatActivity {
 
 
         });
+    }
+    class SendEmailAsyncTask extends AsyncTask<Void, Void, Boolean> {
+        SimpleMail m = new SimpleMail();
+
+        public SendEmailAsyncTask() {}
+
+        @Override
+        protected Boolean doInBackground(Void... params) {
+            try {
+                if (m.send()) {
+                    return true;
+                } else {return true;}
+            } catch (AuthenticationFailedException e) {
+                Log.e(SendEmailAsyncTask.class.getName(), "Bad account details");
+                e.printStackTrace();
+                return false;
+            } catch (MessagingException e) {
+                Log.e(SendEmailAsyncTask.class.getName(), "Email failed");
+                e.printStackTrace();
+                return false;
+            } catch (Exception e) {
+                e.printStackTrace();
+                return false;
+            }
+        }
     }
 }
 
