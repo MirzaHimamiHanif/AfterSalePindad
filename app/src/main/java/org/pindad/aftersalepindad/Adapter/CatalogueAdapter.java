@@ -29,14 +29,12 @@ public class CatalogueAdapter extends RecyclerView.Adapter<CatalogueAdapter.View
         listItems = List;
     }
 
-
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.barang_view, parent, false);
         ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;
     }
-
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {

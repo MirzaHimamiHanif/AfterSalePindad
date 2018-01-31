@@ -58,9 +58,9 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
-                    android:id="@+id/semua"
+                    android:id="@+id/all"
                     android:clickable="true"
-                    android:layout_width="wrap_content"
+                    android:layout_width="95dp"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:padding="8dp"
@@ -68,172 +68,77 @@
 
                     <ImageView
                         android:id="@+id/category1"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/cerclebackgroundyello"
-                        app:srcCompat="@drawable/ic_android_black_24dp"
-                        tools:ignore="VectorDrawableCompat" />
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Semua"
+                        android:text="All"
                         android:layout_gravity="center"/>
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/crane"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/excavator"
+                    android:layout_width="95dp"
                     android:layout_height="wrap_content"
                     android:clickable="true"
                     android:orientation="vertical"
-                    android:padding="8dp">
+                    android:padding="8dp"
+                    android:gravity="center">
 
                     <ImageView
-                        android:id="@+id/category3"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/cerclebackgroundyello"
-                        app:srcCompat="@drawable/ic_android_black_24dp"
-                        tools:ignore="VectorDrawableCompat" />
-
+                        android:id="@+id/category2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:text="Crane" />
+                        android:text="Excava" />
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/traktor"
+                    android:id="@+id/amp"
                     android:clickable="true"
-                    android:layout_width="wrap_content"
+                    android:layout_width="95dp"
                     android:layout_height="wrap_content"
                     android:padding="8dp"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:gravity="center">
 
                     <ImageView
-                        android:id="@+id/category2"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/cerclebackgroundyello"
-                        app:srcCompat="@drawable/ic_android_black_24dp"
-                        tools:ignore="VectorDrawableCompat" />
+                        android:id="@+id/category3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Traktor"
-                        android:gravity="center"/>
+                        android:text="Pertanian"
+                        android:layout_gravity="center"/>
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/excava"
+                    android:id="@+id/apkl"
                     android:clickable="true"
-                    android:layout_width="wrap_content"
+                    android:layout_width="95dp"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="8dp">
+                    android:padding="8dp"
+                    android:gravity="center">
 
                     <ImageView
                         android:id="@+id/category4"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/cerclebackgroundyello"
-                        app:srcCompat="@drawable/ic_android_black_24dp"
-                        tools:ignore="VectorDrawableCompat" />
-                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Excava"
                         android:layout_gravity="center"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/combine"
-                    android:clickable="true"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="8dp"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/boat"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/cerclebackgroundyello"
-                        app:srcCompat="@drawable/ic_android_black_24dp"
-                        tools:ignore="VectorDrawableCompat" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Combine"
-                        android:layout_gravity="center"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/capstan"
-                    android:clickable="true"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="8dp">
-
-                    <ImageView
-                        android:id="@+id/category6"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/cerclebackgroundyello"
-                        app:srcCompat="@drawable/ic_android_black_24dp"
-                        tools:ignore="VectorDrawableCompat" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Capstan"
-                        android:layout_gravity="center"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/generator"
-                    android:clickable="true"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="8dp">
-
-                    <ImageView
-                        android:id="@+id/category7"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/cerclebackgroundyello"
-                        app:srcCompat="@drawable/ic_android_black_24dp"
-                        tools:ignore="VectorDrawableCompat" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Generator"
-                        android:layout_gravity="center"/>
-
-                </LinearLayout>
-                <LinearLayout
-                    android:id="@+id/steering"
-                    android:clickable="true"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="8dp">
-
-                    <ImageView
-                        android:id="@+id/category8"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/cerclebackgroundyello"
-                        app:srcCompat="@drawable/ic_android_black_24dp"
-                        tools:ignore="VectorDrawableCompat" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Steering"
+                        android:text="Perkapalan"
                         android:layout_gravity="center"/>
                 </LinearLayout>
             </LinearLayout>

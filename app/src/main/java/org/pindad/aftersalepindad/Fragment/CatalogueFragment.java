@@ -12,8 +12,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.HorizontalScrollView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+
+import com.bumptech.glide.Glide;
+import com.squareup.picasso.Picasso;
 
 import org.pindad.aftersalepindad.Adapter.CatalogueAdapter;
 import org.pindad.aftersalepindad.Model.ListCatalogue;
@@ -32,11 +36,12 @@ public class CatalogueFragment extends Fragment implements SearchView.OnQueryTex
     RecyclerView mRecyclerView;
     RecyclerView.LayoutManager mLayoutManager;
     RecyclerView.Adapter mAdapter;
+    ImageView categ1, categ2, categ3, categ4;
     HorizontalScrollView horizontalScrollView;
     ApiInterface mApiInterface;
     RelativeLayout relativeLayout;
     List<ListCatalogue> KontakList, temp;
-    LinearLayout mKSteering, mKCapstan, mKCombine, mKCrane, mKTraktor, mKExcava, mKGenerator, mAll;
+    LinearLayout mKAMP, mKExcava, mKAPKL, mAll;
     public CatalogueFragment(){
 
     }
@@ -47,16 +52,41 @@ public class CatalogueFragment extends Fragment implements SearchView.OnQueryTex
         View view = inflater.inflate(R.layout.fragment_catalogue, container, false);
         horizontalScrollView = (HorizontalScrollView) view.findViewById(R.id.sHorizontal);
         horizontalScrollView.setHorizontalScrollBarEnabled(false);
-        mKCrane = (LinearLayout) view.findViewById(R.id.crane);
-        mKTraktor = (LinearLayout) view.findViewById(R.id.traktor);
-        mKGenerator = (LinearLayout) view.findViewById(R.id.generator);
-        mKExcava = (LinearLayout) view.findViewById(R.id.excava);
-        mKSteering = (LinearLayout) view.findViewById(R.id.steering);
-        mKCapstan = (LinearLayout) view.findViewById(R.id.capstan);
-        mKCombine = (LinearLayout) view.findViewById(R.id.combine);
-        mAll = (LinearLayout) view.findViewById(R.id.semua);
+        mKExcava = (LinearLayout) view.findViewById(R.id.excavator);
+        mKAMP = (LinearLayout) view.findViewById(R.id.amp);
+        mKAPKL = (LinearLayout) view.findViewById(R.id.apkl);
+        mAll = (LinearLayout) view.findViewById(R.id.all);
         relativeLayout = (RelativeLayout) view.findViewById(R.id.noInternet);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.catalogueRV);
+        ImageView categ1 = (ImageView) view.findViewById(R.id.category1);
+        ImageView categ2 = (ImageView) view.findViewById(R.id.category2);
+        ImageView categ3 = (ImageView) view.findViewById(R.id.category3);
+        ImageView categ4 = (ImageView) view.findViewById(R.id.category4);
+
+        Glide.with(getActivity())
+                .load("http://api.pindad.com/as/files/pictures/all.JPG")
+                .override(245,180)
+                .centerCrop()
+                .into(categ1);
+
+        Glide.with(getActivity())
+                .load("http://api.pindad.com/as/files/pictures/categ1.JPG")
+                .override(245,180)
+                .centerCrop()
+                .into(categ2);
+
+        Glide.with(getActivity())
+                .load("http://api.pindad.com/as/files/pictures/categ2.JPG")
+                .override(245,180)
+                .centerCrop()
+                .into(categ3);
+
+        Glide.with(getActivity())
+                .load("http://api.pindad.com/as/files/pictures/categ3.JPG")
+                .override(245,180)
+                .centerCrop()
+                .into(categ4);
+
         mRecyclerView.setHasFixedSize(true);
         setHasOptionsMenu(true);
         final SearchView searchView = (SearchView) view.findViewById(R.id.search);
@@ -71,13 +101,10 @@ public class CatalogueFragment extends Fragment implements SearchView.OnQueryTex
                     appBarLayout.setExpanded(false);
             }
         });
-        mKCrane.setOnClickListener(this);
-        mKTraktor.setOnClickListener(this);
-        mKGenerator.setOnClickListener(this);
+
         mKExcava.setOnClickListener(this);
-        mKSteering.setOnClickListener(this);
-        mKCapstan.setOnClickListener(this);
-        mKCombine.setOnClickListener(this);
+        mKAMP.setOnClickListener(this);
+        mKAPKL.setOnClickListener(this);
         mAll.setOnClickListener(this);
         mLayoutManager  = new GridLayoutManager(getActivity(),2);
         mRecyclerView.setLayoutManager(mLayoutManager);
@@ -142,29 +169,17 @@ public class CatalogueFragment extends Fragment implements SearchView.OnQueryTex
 
     @Override
     public void onClick(View view) {
-        if (view.getId()!=R.id.semua) {
+        if (view.getId()!=R.id.all) {
             String x = null;
             switch (view.getId()){
-                case R.id.excava :
-                    x = "excava";
+                case R.id.excavator :
+                    x = "excavator";
                     break;
-                case R.id.crane :
-                    x = "crane";
+                case R.id.amp :
+                    x = "alat & mesin pertanian";
                     break;
-                case R.id.traktor :
-                    x = "traktor";
-                    break;
-                case R.id.steering :
-                    x = "steering";
-                    break;
-                case R.id.generator :
-                    x = "generator";
-                    break;
-                case R.id.capstan :
-                    x = "generator";
-                    break;
-                case R.id.combine :
-                    x = "combine";
+                case R.id.apkl :
+                    x = "alat & peralatan kapal laut";
                     break;
             }
             List<ListCatalogue> filteredValues = new ArrayList<>();

@@ -40,18 +40,18 @@ public class FaqFragment extends Fragment   {
         // Inflate the layout for this fragment
 
         View rootView = inflater.inflate(R.layout.fragment_faq, container, false);
-
-        MediaController mc = new MediaController(getActivity());
-
-        String path="http://www.ted.com/talks/download/video/8584/talk/761";
-        String path1="http://api.pindad.com/as/files/video/video2.MP4";
-
-        Uri uri=Uri.parse(path1);
-
-        VideoView video=(VideoView) rootView.findViewById(R.id.faqVideo);
-        video.setVideoURI(uri);
-        video.setMediaController(mc);
-        video.start();
+//
+//        MediaController mc = new MediaController(getActivity());
+//
+//        String path="http://www.ted.com/talks/download/video/8584/talk/761";
+//        String path1="http://api.pindad.com/as/files/video/video2.MP4";
+//
+//        Uri uri=Uri.parse(path1);
+//
+//        VideoView video=(VideoView) rootView.findViewById(R.id.faqVideo);
+//        video.setVideoURI(uri);
+//        video.setMediaController(mc);
+//        video.start();
 
 
         expListView = (ExpandableListView) rootView.findViewById(R.id.lvExp);
