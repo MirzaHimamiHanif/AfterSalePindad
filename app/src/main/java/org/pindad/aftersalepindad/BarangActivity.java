@@ -130,6 +130,7 @@ public class BarangActivity extends AppCompatActivity {
         SendEmailAsyncTask email = new SendEmailAsyncTask();
         email.m.setBody(comment.getText().toString());
         email.execute();
+
 //        Call<PostTicketing> postCatalogue = mApiInterface.postCatalogue(
 //                dataTicketing.getNama(),
 //                dataTicketing.getPerusahaan(),
