@@ -9,16 +9,21 @@ public class ListCatalogue {
     private String jenis_produk;
     @SerializedName("tipe_produk")
     private String tipe_produk;
-    private int imageUrl;
+    @SerializedName("pic")
+    private String pic;
+
+
+
+//    private int imageUrl;
 
     public ListCatalogue(){
 
-    }
+        }
 
-    public ListCatalogue(String jenis_produk, String tipe_produk, int imageUrl) {
-        this.jenis_produk = jenis_produk;
+    public ListCatalogue(String jenis_produk, String tipe_produk, String pic) {
+            this.jenis_produk = jenis_produk;
         this.tipe_produk = tipe_produk;
-        this.imageUrl = imageUrl;
+        this.pic = pic;
     }
 
     public String getJenis_produk() {
@@ -37,11 +42,17 @@ public class ListCatalogue {
         this.tipe_produk = tipe_produk;
     }
 
-    public int getImageUrl() {
-        return imageUrl;
+    public String getPic() {
+        return pic;
     }
 
-    public void setImageUrl(int imageUrl) {
-        this.imageUrl = imageUrl;
+    public void setPic(String pic) {
+        this.pic = pic;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        return (this.jenis_produk.equals(((ListCatalogue) obj).jenis_produk));
+    }
+
 }

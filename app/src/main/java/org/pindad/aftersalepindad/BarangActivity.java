@@ -36,7 +36,11 @@ import org.pindad.aftersalepindad.Model.PostTicketing;
 import org.pindad.aftersalepindad.Rest.ApiClient;
 import org.pindad.aftersalepindad.Rest.ApiInterface;
 
+import java.io.BufferedInputStream;
 import java.io.File;
+import java.io.InputStream;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.List;
 
 import javax.mail.AuthenticationFailedException;
@@ -121,7 +125,9 @@ public class BarangActivity extends AppCompatActivity {
             showData();
             }
         });
+
     }
+
     private void showData() {
 
         SendEmailAsyncTask email = new SendEmailAsyncTask();
