@@ -7,6 +7,28 @@
     android:orientation="vertical"
     tools:context="org.pindad.aftersalepindad.VideoActivity">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/video_background"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@drawable/materialbackground"
+            android:scaleType="centerCrop"/>
+
+        <TextView
+            android:id="@+id/term_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="Video FaQ"
+            android:textSize="28dp"
+            android:textColor="@color/backgroundcolor"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
     <ListView
         android:id="@+id/videoListView"
         android:layout_width="match_parent"

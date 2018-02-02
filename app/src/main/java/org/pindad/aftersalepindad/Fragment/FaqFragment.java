@@ -4,6 +4,8 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,7 +42,7 @@ public class FaqFragment extends Fragment   {
         // Inflate the layout for this fragment
 
         View rootView = inflater.inflate(R.layout.fragment_faq, container, false);
-//
+
 //        MediaController mc = new MediaController(getActivity());
 //
 //        String path="http://www.ted.com/talks/download/video/8584/talk/761";

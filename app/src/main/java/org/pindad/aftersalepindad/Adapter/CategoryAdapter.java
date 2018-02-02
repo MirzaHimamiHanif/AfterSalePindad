@@ -15,6 +15,7 @@ import com.bumptech.glide.Glide;
 
 import org.pindad.aftersalepindad.BarangActivity;
 import org.pindad.aftersalepindad.Model.ListCatalogue;
+import org.pindad.aftersalepindad.Model.ListCategory;
 import org.pindad.aftersalepindad.R;
 
 import java.util.List;
@@ -24,12 +25,12 @@ import java.util.List;
  */
 
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHolder>{
-    private List<ListCatalogue> listItems;
-    private Context mContext;
+    private List<ListCategory> listCategory;
+    private Context catContext;
 
-    public CategoryAdapter(Context context, List<ListCatalogue> List) {
-        mContext = context;
-        listItems = List;
+    public CategoryAdapter(Context context, List<ListCategory> List) {
+        catContext = context;
+        listCategory = List;
     }
 
     @Override
@@ -41,9 +42,9 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.description.setText(listItems.get(position).getJenis_produk());
-        Glide.with(mContext)
-                .load(listItems.get(position).getPic())
+        holder.nameCategory.setText(listCategory.get(position).getName_category());
+        Glide.with(catContext)
+                .load(listCategory.get(position).getImage_category())
                 .override(245,180)
                 .centerCrop()
                 .into(((ViewHolder) holder).image);
@@ -52,7 +53,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
     @Override
     public int getItemCount() {
         try {
-            return listItems.size();
+            return listCategory.size();
         } catch (Exception e){
             return 0;
         }
@@ -60,11 +61,11 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public ImageView image;
-        public TextView nameCatalogue, description;
+        public TextView nameCategory;
         public ViewHolder(View itemView) {
             super(itemView);
             image = (ImageView) itemView.findViewById(R.id.cImage);
-            description = (TextView) itemView.findViewById(R.id.cText);
+            nameCategory = (TextView) itemView.findViewById(R.id.cText);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

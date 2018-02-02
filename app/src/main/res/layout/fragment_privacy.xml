@@ -42,32 +42,14 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="A Terms of Service agreement helps you set out the rules and guidelines that your users or visitors must agree to in order to use your website or mobile app."
+                android:text="PT. Pindad built the After Sales app as an Ad Supported app. This SERVICE is provided by PT. Pindad at no cost and is intended for use as is.
+
+This page is used to inform website visitors regarding our policies with the collection, use, and disclosure of Personal Information if anyone decided to use our Service.
+
+If you choose to use our Service, then you agree to the collection and use of information in relation to this policy. The Personal Information that we collect is used for providing and improving the Service. We will not use or share your information with anyone except as described in this Privacy Policy.
+
+The terms used in this Privacy Policy have the same meanings as in our Terms and Conditions, which is accessible at After Sales unless otherwise defined in this Privacy Policy."
                 android:textAlignment="center"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Informing users that your website, its content, the logo, etc. is your property and it’s protected by copyright laws." />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Informing users that you can disable their accounts (if users can create an account with you) or disable access to your website in case of abuses, e.g. spamming other users" />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Setting the community’s guidelines, if your website/mobile apps have users that can create content which is shared by other users. For example: banning users to upload or share content that isn’t theirs or not allowing users to share content found on your website/mobile app without an attribution link, etc." />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="How users can use the content you’ve created or use the content other users created on your website/mobile app" />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Who owns the right to content created by users on your platform" />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="What happens if a third party finds protected works on your platform that are copyright infringements" />
 
             <ImageView
                 android:layout_width="match_parent"

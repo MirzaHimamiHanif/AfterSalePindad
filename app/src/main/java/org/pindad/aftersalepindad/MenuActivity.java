@@ -145,6 +145,7 @@ public class MenuActivity extends BaseActivity implements NavigationView.OnNavig
             fragmentManager.beginTransaction()
                     .replace(R.id.catalogueContainer, profilFragment)
                     .commit();
+//            navigation.setVisibility(View.GONE);
             return false;
         }else if (item.getItemId() == R.id.navigation2) {
             TermFragment termFragment = new TermFragment();

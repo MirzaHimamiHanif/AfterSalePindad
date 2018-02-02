@@ -111,16 +111,5 @@
                 android:textSize="24sp"
                 android:textStyle="italic" />
         </LinearLayout>
-
-        <Button
-            android:id="@+id/logout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="32dp"
-            android:background="@color/colorPrimary"
-            android:text="Log Out"
-            android:textColor="@color/lightgray"
-            android:textStyle="bold"/>
     </LinearLayout>
 </LinearLayout>

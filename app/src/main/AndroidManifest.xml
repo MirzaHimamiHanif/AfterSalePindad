@@ -3,7 +3,7 @@
     package="org.pindad.aftersalepindad">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -28,7 +28,7 @@
             android:label="@string/title_activity_menu" />
         <activity android:name=".BarangActivity" />
         <activity android:name=".VideoActivity" />
-        <activity android:name=".QuisionerActivity"></activity>
+        <activity android:name=".QuisionerActivity" />
     </application>
 
 </manifest>
