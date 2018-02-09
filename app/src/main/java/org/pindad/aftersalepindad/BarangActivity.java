@@ -129,7 +129,6 @@ public class BarangActivity extends AppCompatActivity {
     }
 
     private void showData() {
-
         SendEmailAsyncTask email = new SendEmailAsyncTask();
         email.m.setBody(comment.getText().toString());
         email.execute();
