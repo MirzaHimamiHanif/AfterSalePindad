@@ -21,7 +21,7 @@ public class ListCatalogue {
         }
 
     public ListCatalogue(String jenis_produk, String tipe_produk, String pic) {
-            this.jenis_produk = jenis_produk;
+        this.jenis_produk = jenis_produk;
         this.tipe_produk = tipe_produk;
         this.pic = pic;
     }

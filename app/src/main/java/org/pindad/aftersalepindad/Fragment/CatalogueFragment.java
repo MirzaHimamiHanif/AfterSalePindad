@@ -17,7 +17,6 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.bumptech.glide.Glide;
-import com.squareup.picasso.Picasso;
 
 import org.pindad.aftersalepindad.Adapter.CatalogueAdapter;
 import org.pindad.aftersalepindad.Model.ListCatalogue;
@@ -112,6 +111,7 @@ public class CatalogueFragment extends Fragment implements SearchView.OnQueryTex
         refresh();
         return view ;
     }
+
     public void refresh() {
         Call<List<ListCatalogue>> kontakCall = mApiInterface.getCatalogue();
         kontakCall.enqueue(new Callback<List<ListCatalogue>>() {
@@ -173,7 +173,7 @@ public class CatalogueFragment extends Fragment implements SearchView.OnQueryTex
             String x = null;
             switch (view.getId()){
                 case R.id.excavator :
-                    x = "excavator";
+                    x = "excava";
                     break;
                 case R.id.amp :
                     x = "alat & mesin pertanian";

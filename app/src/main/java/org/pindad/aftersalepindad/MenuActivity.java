@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -106,11 +107,9 @@ public class MenuActivity extends BaseActivity implements NavigationView.OnNavig
                     return true;
                 case R.id.navigation_dashboard:
                     cek("faq");
-
                     return true;
                 case R.id.navigation_notifications:
                     cek("menu");
-
                     return true;
             }
             return false;
@@ -140,10 +139,15 @@ public class MenuActivity extends BaseActivity implements NavigationView.OnNavig
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         drawerLayout.closeDrawer(GravityCompat.START);
-        if (item.getItemId() == R.id.navigation1) {
+
+        Fragment fragment = null;
+        fragment = new ProfilFragment();
+
+        if (item.getItemId() == R.id.navigation1 || fragment == null) {
             ProfilFragment profilFragment = new ProfilFragment();
             fragmentManager.beginTransaction()
                     .replace(R.id.catalogueContainer, profilFragment)
+                    .addToBackStack(null)
                     .commit();
 //            navigation.setVisibility(View.GONE);
             return false;
@@ -166,7 +170,7 @@ public class MenuActivity extends BaseActivity implements NavigationView.OnNavig
 //                    .commit();
             Intent i = new  Intent(MenuActivity.this, VideoActivity.class);
             startActivity(i);
-        }else if (item.getItemId() == R.id.navigation6) {
+        }else if (item.getItemId() == R.id.navigation6 ) {
             Intent i = new  Intent(MenuActivity.this, QuisionerActivity.class);
             startActivity(i);
         }else if (item.getItemId() == R.id.navigation4) {
@@ -182,5 +186,14 @@ public class MenuActivity extends BaseActivity implements NavigationView.OnNavig
     }
 
     public void displayMessage(String s) {
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (getFragmentManager().getBackStackEntryCount() == 0) {
+            this.finish();
+        } else {
+            getFragmentManager().popBackStack();
+        }
     }
 }
