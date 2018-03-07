@@ -157,8 +157,6 @@ public class CatalogueFragment extends Fragment implements SearchView.OnQueryTex
         }catch (Exception e){
 
         }
-
-
         return false;
     }
 

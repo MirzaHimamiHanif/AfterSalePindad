@@ -170,9 +170,6 @@ public class MenuActivity extends BaseActivity implements NavigationView.OnNavig
 //                    .commit();
             Intent i = new  Intent(MenuActivity.this, VideoActivity.class);
             startActivity(i);
-        }else if (item.getItemId() == R.id.navigation6 ) {
-            Intent i = new  Intent(MenuActivity.this, QuisionerActivity.class);
-            startActivity(i);
         }else if (item.getItemId() == R.id.navigation4) {
             SaveSharedPreference.deletePreference(this);
             Intent intent = getIntent();
