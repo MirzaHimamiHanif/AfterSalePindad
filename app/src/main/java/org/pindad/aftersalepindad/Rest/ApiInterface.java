@@ -29,6 +29,7 @@ public interface ApiInterface {
                                       @Field("issue") String issue,
                                       @Field("ip_address") String ip_address,
                                       @Field("status") String status);
+//                                      @Field("image") String image);
 
     @FormUrlEncoded
     @PUT("login")

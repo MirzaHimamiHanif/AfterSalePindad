@@ -4,8 +4,10 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClient {
-//    public static final String BASE_URL = "http://192.168.137.1/rest_ci/index.php/";
 
+//    public static final String BASE_URL = "http://192.168.11.62/as/";
+
+//    public static final String BASE_URL = "http://192.168.90.1/rest_ci/as/";
     public static final String BASE_URL = "http://api.pindad.com/as/";
 
     private static Retrofit retrofit = null;

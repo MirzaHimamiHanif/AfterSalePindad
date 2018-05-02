@@ -33,8 +33,6 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         this._listDataChild = listChildData;
     }
 
-//    public ExpandableListAdapter(FragmentActivity faqFragment, List<String> listDataHeader, HashMap<String, List<String>> listDataChild) {
-//    }
 
     @Override
     public Object getChild(int groupPosition, int childPosititon) {

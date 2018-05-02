@@ -4,11 +4,13 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.wifi.WifiManager;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.format.Formatter;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
@@ -29,9 +31,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.pindad.aftersalepindad.Adapter.CatalogueAdapter;
 import org.pindad.aftersalepindad.Adapter.SimpleMail;
 import org.pindad.aftersalepindad.Adapter.ViewPagerAdapter;
 import org.pindad.aftersalepindad.Model.DataTicketing;
+import org.pindad.aftersalepindad.Model.ListCatalogue;
 import org.pindad.aftersalepindad.Model.PostTicketing;
 import org.pindad.aftersalepindad.Rest.ApiClient;
 import org.pindad.aftersalepindad.Rest.ApiInterface;
@@ -41,6 +45,7 @@ import java.io.File;
 import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.mail.AuthenticationFailedException;
@@ -63,6 +68,8 @@ public class BarangActivity extends AppCompatActivity {
     private DataTicketing dataTicketing;
     private EditText comment;
     ApiInterface mApiInterface;
+    List<ListCatalogue> KontakList;
+    String gambar;
 
     public static final int REQUEST_CODE_CAMERA = 0012;
     public static final int REQUEST_CODE_GALLERY = 0013;
@@ -91,7 +98,7 @@ public class BarangActivity extends AppCompatActivity {
         mTxtOutput.setMovementMethod(ScrollingMovementMethod.getInstance());
         ScrollView sView = (ScrollView)findViewById(R.id.ScrollView01);
         viewPager = (ViewPager) findViewById(R.id.viewpager);
-        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(this);
+        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(this, getIntent().getStringExtra("getPic"));
         viewPager.setAdapter(viewPagerAdapter);
         mApiInterface = ApiClient.getClient().create(ApiInterface.class);
         mKirim = (Button) findViewById(R.id.kirim);
@@ -100,6 +107,8 @@ public class BarangActivity extends AppCompatActivity {
         comment = (EditText) findViewById(R.id.comment);
         mNama.setText(getIntent().getStringExtra("getNama"));
         mTxtOutput.setText(getIntent().getStringExtra("getDeskripsi"));
+
+
         mKirim.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -125,44 +134,47 @@ public class BarangActivity extends AppCompatActivity {
             showData();
             }
         });
-
     }
 
     private void showData() {
         SendEmailAsyncTask email = new SendEmailAsyncTask();
         email.m.setBody(comment.getText().toString());
         email.execute();
-        Call<PostTicketing> postCatalogue = mApiInterface.postCatalogue(
-                "T0001",
-                SaveSharedPreference.getIdCustomer(getApplication()),
-                "1",
-                comment.getText().toString(),
-                "",
-                "Belum"
-        );
-        postCatalogue.enqueue(new Callback<PostTicketing>() {
-            @Override
-            public void onResponse(Call<PostTicketing> call, Response<PostTicketing> response) {
-                new AlertDialog.Builder(BarangActivity.this)
-                        .setMessage("Pesan telah terkirim")
-                        .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                Intent intent = new Intent(BarangActivity.this, QuisionerActivity.class);
-                                overridePendingTransition(0, 0);
-                                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                                finish();
-                                overridePendingTransition(0, 0);
-                                startActivity(intent);
-                            }
-                        }).show();
-            }
+        if (comment.getText().toString().length() == 0) {
+            comment.setError("Data Kosong");
+        } else {
+            Call<PostTicketing> postCatalogue = mApiInterface.postCatalogue(
+                    "T0001",
+                    SaveSharedPreference.getIdCustomer(getApplication()),
+                    "1",
+                    comment.getText().toString(),
+                    "",
+                    "Belum"
+            );
+            postCatalogue.enqueue(new Callback<PostTicketing>() {
+                @Override
+                public void onResponse(Call<PostTicketing> call, Response<PostTicketing> response) {
 
-            @Override
-            public void onFailure(Call<PostTicketing> call, Throwable t) {
-                Toast.makeText(getApplicationContext(), "Error", LENGTH_LONG).show();
-            }
-        });
+                    new AlertDialog.Builder(BarangActivity.this)
+                            .setMessage("Pesan telah terkirim")
+                            .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    Intent intent = new Intent(BarangActivity.this, MenuActivity.class);
+                                    overridePendingTransition(0, 0);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                                    finish();
+                                    overridePendingTransition(0, 0);
+                                    startActivity(intent);
+                                }
+                            }).show();
+                }
+                @Override
+                public void onFailure(Call<PostTicketing> call, Throwable t) {
+                    Toast.makeText(getApplicationContext(), "Error", LENGTH_LONG).show();
+                }
+            });
+        }
     }
 
     private void openImage(){
@@ -236,5 +248,7 @@ public class BarangActivity extends AppCompatActivity {
             }
         }
     }
+
+
 }
 

@@ -87,7 +87,7 @@ public class SimpleMail extends javax.mail.Authenticator{
             MimeMessage msg = new MimeMessage(session);
 
             msg.setFrom(new InternetAddress(_from));
-            msg.setRecipients(MimeMessage.RecipientType.TO, "zamif07@gmail.com");
+            msg.setRecipients(MimeMessage.RecipientType.TO, "kpindad@gmail.com");
 
             msg.setSubject(_subject);
             msg.setSentDate(new Date());

@@ -34,7 +34,6 @@ public class LoginFragment extends Fragment {
     }
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_login, container, false);
-        final TextView textView = (TextView) rootView.findViewById(R.id.title_text);
         username = (EditText) rootView.findViewById(R.id.username);
         password = (EditText) rootView.findViewById(R.id.password);
         Button login = (Button) rootView.findViewById(R.id.login);

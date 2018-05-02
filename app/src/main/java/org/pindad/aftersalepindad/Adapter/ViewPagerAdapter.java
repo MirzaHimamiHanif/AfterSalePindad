@@ -8,20 +8,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+
+import com.bumptech.glide.Glide;
+
 import org.pindad.aftersalepindad.R;
 
 public class ViewPagerAdapter extends PagerAdapter {
     private Context context;
     private LayoutInflater layoutInflater;
-    private Integer[] images = {R.drawable.logo_pindad, R.drawable.cerclebackgroundyello, R.drawable.ic_android_black_24dp};
+    private String gambar;
 
-    public ViewPagerAdapter(Context context) {
+    public ViewPagerAdapter(Context context, String gambar) {
         this.context = context;
+        this.gambar = gambar;
     }
 
     @Override
     public int getCount() {
-        return images.length;
+        return 1;
     }
 
     @Override
@@ -34,7 +38,11 @@ public class ViewPagerAdapter extends PagerAdapter {
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = layoutInflater.inflate(R.layout.custom_layout, null);
         ImageView imageView = (ImageView) view.findViewById(R.id.imageView);
-        imageView.setImageResource(images[position]);
+        Glide.with(context)
+                .load(gambar)
+                .override(245,180)
+                .centerCrop()
+                .into(imageView);
         ViewPager vp = (ViewPager) container;
         vp.addView(view, 0);
 

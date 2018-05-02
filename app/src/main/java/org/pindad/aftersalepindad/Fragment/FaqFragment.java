@@ -77,45 +77,45 @@ public class FaqFragment extends Fragment   {
         });
 
         // Listview Group expanded listener
-        expListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
-
-            @Override
-            public void onGroupExpand(int groupPosition) {
-                Toast.makeText(getActivity(),
-                        listDataHeader.get(groupPosition) + " Expanded",
-                        Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        // Listview Group collasped listener
-        expListView.setOnGroupCollapseListener(new ExpandableListView.OnGroupCollapseListener() {
-
-            @Override
-            public void onGroupCollapse(int groupPosition) {
-                Toast.makeText(getActivity(),
-                        listDataHeader.get(groupPosition) + " Collapsed",
-                        Toast.LENGTH_SHORT).show();
-            }
-        });
+//        expListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
+//
+//            @Override
+//            public void onGroupExpand(int groupPosition) {
+//                Toast.makeText(getActivity(),
+//                        listDataHeader.get(groupPosition) + " Expanded",
+//                        Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//
+//        // Listview Group collasped listener
+//        expListView.setOnGroupCollapseListener(new ExpandableListView.OnGroupCollapseListener() {
+//
+//            @Override
+//            public void onGroupCollapse(int groupPosition) {
+//                Toast.makeText(getActivity(),
+//                        listDataHeader.get(groupPosition) + " Collapsed",
+//                        Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
         // Listview on child click listener
-        expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
-
-            @Override
-            public boolean onChildClick(ExpandableListView parent, View v,
-                                        int groupPosition, int childPosition, long id) {
-                // TODO Auto-generated method stub
-                Toast.makeText(
-                        getActivity(),
-                        listDataHeader.get(groupPosition)
-                                + " : "
-                                + listDataChild.get(
-                                listDataHeader.get(groupPosition)).get(
-                                childPosition), Toast.LENGTH_SHORT)
-                        .show();
-                return false;
-            }
-        });
+//        expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+//
+//            @Override
+//            public boolean onChildClick(ExpandableListView parent, View v,
+//                                        int groupPosition, int childPosition, long id) {
+//                // TODO Auto-generated method stub
+//                Toast.makeText(
+//                        getActivity(),
+//                        listDataHeader.get(groupPosition)
+//                                + " : "
+//                                + listDataChild.get(
+//                                listDataHeader.get(groupPosition)).get(
+//                                childPosition), Toast.LENGTH_SHORT)
+//                        .show();
+//                return false;
+//            }
+//        });
         return rootView;
     }
 
@@ -124,54 +124,103 @@ public class FaqFragment extends Fragment   {
         listDataChild = new HashMap<String, List<String>>();
 
         // Adding child data
-        listDataHeader.add("Pertanyaan 1");
-        listDataHeader.add("Pertanyaan 2");
-        listDataHeader.add("Pertanyaan 3");
-        listDataHeader.add("Pertanyaan 4");
-        listDataHeader.add("Pertanyaan 5");
+        listDataHeader.add("Engine Doesn't Start");
+
+
+
+        listDataHeader.add("Engine Doesn't Start");
+        listDataHeader.add("Engine Power Low");
+        listDataHeader.add("Engine Doesn't Stop");
+        listDataHeader.add("Engine Black Smoke");
+        listDataHeader.add("Engine White Smoke");
+        listDataHeader.add("Engine Can't High Idle");
+        listDataHeader.add("Engine Knocking");
+        listDataHeader.add("Oil Consumption is Excessive");
+        listDataHeader.add("Oil is Mixed in Coolant");
+        listDataHeader.add("Oil Level Rises");
+        listDataHeader.add("Coolant Temperature Rises to High");
+        listDataHeader.add("Hydraulic Low Power");
 
         List<String> ques1 = new ArrayList<String>();
-        ques1.add("Jawaban 1.1");
-        ques1.add("Jawaban 1.2");
-        ques1.add("Jawaban 1.3");
-        ques1.add("Jawaban 1.4");
-        ques1.add("Jawaban 1.5");
+        ques1.add("Terdapat udara yang terjebak didalam fuel system");
+        ques1.add("Keabnormalan pada supply pump, shut-off valve");
+        ques1.add("Cranking RPM tidak tercapai");
+        ques1.add("Fuel tercampur air, dsb");
 
         List<String> ques2 = new ArrayList<String>();
-        ques2.add("Jawaban 2.1");
-        ques2.add("Jawaban 2.2");
-        ques2.add("Jawaban 2.3");
-        ques2.add("Jawaban 2.4");
-        ques2.add("Jawaban 2.5");
+        ques2.add("Terjadi kebuntuan pada air cleaner atau fuel filter");
+        ques2.add("Injection timing tidak tepat");
+        ques2.add("Keabnormalan pada supply pump, shut-off valve");
+        ques2.add("Lingkage thottle atau current throttle drive kurang maksimal");
+        ques2.add("Kualitas fuel jelek: bercampur minya, minyak tanah(kerosin) atau kotoran lainnya");
 
         List<String> ques3 = new ArrayList<String>();
-        ques3.add("Jawaban 3.1");
-        ques3.add("Jawaban 3.2");
-        ques3.add("Jawaban 3.3");
-        ques3.add("Jawaban 3.4");
-        ques3.add("Jawaban 3.5");
+        ques3.add("Shut-off solenoid valve putus");
+        ques3.add("O-ring injector fuel return bocor, sehngga masuk ke port metering");
 
         List<String> ques4 = new ArrayList<String>();
-        ques4.add("Jawaban 4.1");
-        ques4.add("Jawaban 4.2");
-        ques4.add("Jawaban 4.3");
-        ques4.add("Jawaban 4.4");
-        ques4.add("Jawaban 4.5");
+        ques4.add("Pada dasarnya disebabkan perbandngan udara masuk lebih sedikir dari fuel yang diinjeksikan, sehingga ada");
+        ques4.add("Air cleaner buntu");
+        ques4.add("Turbocharger abnormal");
+        ques4.add("Over fuelling karena keabnormalan pada control fuel system");
+        ques4.add("Unit beroperasi pada daerah ketinggian, sehingga kerapatan udara luar relatif lebih kecil");
 
         // Adding child data
         List<String> ques5 = new ArrayList<String>();
-        ques5.add("Jawaban 5.1");
-        ques5.add("Jawaban 5.2");
-        ques5.add("Jawaban 5.3");
-        ques5.add("Jawaban 5.4");
-        ques5.add("Jawaban 5.5");
+        ques5.add("Ujung injector pecah, sehingga tidak terjadi injection spray");
+        ques5.add("Injection timing tidak tepat");
+
+        List<String> ques6 = new ArrayList<String>();
+        ques6.add("Fuel control dial (potentiometer) abnormal");
+        ques6.add("Keabnormalan pada ECM");
+        ques6.add("Misadjustment engine speed sensor, dsb");
+
+        List<String> ques7 = new ArrayList<String>();
+        ques7.add("Timing injection terlalu cepat atau lambat");
+        ques7.add("Terjadi keausan berlebihan pada main bearing");
+        ques7.add("Adjustment valve clearance tidak tepat, dsb");
+
+        List<String> ques8 = new ArrayList<String>();
+        ques8.add("Keausan pada liner atau ring piston terlalu besar (oil up)");
+        ques8.add("Keausan pada valve guide terlalu besar (oil down)");
+        ques8.add("Kerusakan turbocharger, keausan pada bushing atau seal, sehingga oli bocor ke sisi blower atau impeller");
+
+        List<String> ques9 = new ArrayList<String>();
+        ques9.add("Terjadi keretakan pada cylinder head atau engine block pada sisi jalur air");
+        ques9.add("O-ring liner bocor");
+        ques9.add("O-ring gasket cylinder head bocor");
+        ques9.add("Oil cooler bocor, dsb");
+
+        List<String> ques10 = new ArrayList<String>();
+        ques10.add("Oli level engine dapat naik disebabkan adanya fuel atau air radiator yang bocor dan masuk ke dalam crack case");
+        ques10.add("Keausan Plunger FIP teralalu besar, sehingga fuel bocor ke dalam case FIP");
+        ques10.add("Nozzle atau injector pecah, sehingga fuel langsung bocor ke ruang bacar dan turun melalui ring piston masuk");
+        ques10.add("O-ring return port nozzle atau plunger bocor, dsb");
+        ques10.add("Jika level bertambah tinggi karena bercampur dengan air maka, penyebabnya sama dengan oil engine bercampur");
+
+        List<String> ques11 = new ArrayList<String>();
+        ques11.add("Core & Fin rediator buntu");
+        ques11.add("Air radiator kurang");
+        ques11.add("Thermostat jammed");
+        ques11.add("Vaccum valve (cap radiator) tidak berfungsi, dsb");
+        ques11.add("Impeller water pump slip, atau internal leakage terlalu besar, dsb");
+
+        List<String> ques12 = new ArrayList<String>();
+        ques12.add("Setting primary valve terlalu rendah");
 
 
-        listDataChild.put(listDataHeader.get(0), ques1); // Header, Child data
-        listDataChild.put(listDataHeader.get(1), ques2);
-        listDataChild.put(listDataHeader.get(2), ques3);
-        listDataChild.put(listDataHeader.get(3), ques4);
-        listDataChild.put(listDataHeader.get(4), ques5);
+        listDataChild.put(listDataHeader.get(1), ques1); // Header, Child data
+        listDataChild.put(listDataHeader.get(2), ques2);
+        listDataChild.put(listDataHeader.get(3), ques3);
+        listDataChild.put(listDataHeader.get(4), ques4);
+        listDataChild.put(listDataHeader.get(5), ques5);
+        listDataChild.put(listDataHeader.get(6), ques6);
+        listDataChild.put(listDataHeader.get(7), ques7);
+        listDataChild.put(listDataHeader.get(8), ques8);
+        listDataChild.put(listDataHeader.get(9), ques9);
+        listDataChild.put(listDataHeader.get(10), ques10);
+        listDataChild.put(listDataHeader.get(11), ques11);
+        listDataChild.put(listDataHeader.get(12), ques12);
     }
 
 

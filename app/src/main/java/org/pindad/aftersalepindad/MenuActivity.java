@@ -142,7 +142,6 @@ public class MenuActivity extends BaseActivity implements NavigationView.OnNavig
 
         Fragment fragment = null;
         fragment = new ProfilFragment();
-
         if (item.getItemId() == R.id.navigation1 || fragment == null) {
             ProfilFragment profilFragment = new ProfilFragment();
             fragmentManager.beginTransaction()
@@ -163,13 +162,9 @@ public class MenuActivity extends BaseActivity implements NavigationView.OnNavig
                     .replace(R.id.catalogueContainer, privacyFragment)
                     .commit();
             return false;
-        }else if (item.getItemId() == R.id.navigation5) {
-//            VideoFragment videoFragment = new VideoFragment();
-//            fragmentManager.beginTransaction()
-//                    .replace(R.id.catalogueContainer, videoFragment)
-//                    .commit();
-            Intent i = new  Intent(MenuActivity.this, VideoActivity.class);
-            startActivity(i);
+//        }else if (item.getItemId() == R.id.navigation5) {
+//            Intent i = new  Intent(MenuActivity.this, VideoActivity.class);
+//            startActivity(i);
         }else if (item.getItemId() == R.id.navigation4) {
             SaveSharedPreference.deletePreference(this);
             Intent intent = getIntent();

@@ -47,6 +47,7 @@ public class CatalogueAdapter extends RecyclerView.Adapter<CatalogueAdapter.View
                 .override(245,180)
                 .centerCrop()
                 .into(((ViewHolder) holder).image);
+        holder.gambar = listItems.get(position).getPic();
     }
 
     @Override
@@ -62,7 +63,8 @@ public class CatalogueAdapter extends RecyclerView.Adapter<CatalogueAdapter.View
         public ImageView image;
         public TextView nameCatalogue, description;
         public CardView cardView;
-        public ViewHolder(View itemView) {
+        public String gambar;
+        public ViewHolder(final View itemView) {
             super(itemView);
             cardView = (CardView) itemView.findViewById(R.id.bankcardId);
             image = (ImageView) itemView.findViewById(R.id.imageCatalogue);
@@ -74,6 +76,7 @@ public class CatalogueAdapter extends RecyclerView.Adapter<CatalogueAdapter.View
                     Intent intent = new Intent(mContext, BarangActivity.class);
                     intent.putExtra("getNama", nameCatalogue.getText().toString());
                     intent.putExtra("getDeskripsi", description.getText().toString());
+                    intent.putExtra("getPic",gambar);
                     mContext.startActivity(intent);
                     Log.d("Tes", "berhasil");
                 }
