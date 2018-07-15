@@ -9,8 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.google.android.gms.common.SignInButton;
-
 import org.pindad.aftersalepindad.MenuActivity;
 import org.pindad.aftersalepindad.R;
 

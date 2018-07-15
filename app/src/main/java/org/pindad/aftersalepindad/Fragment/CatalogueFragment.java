@@ -17,6 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 
 import org.pindad.aftersalepindad.Adapter.CatalogueAdapter;
 import org.pindad.aftersalepindad.Model.ListCatalogue;
@@ -64,26 +65,30 @@ public class CatalogueFragment extends Fragment implements SearchView.OnQueryTex
 
         Glide.with(getActivity())
                 .load("http://api.pindad.com/as/files/pictures/all.JPG")
-                .override(245,180)
-                .centerCrop()
+                .apply(new RequestOptions()
+                        .override(245,180)
+                        .centerCrop())
                 .into(categ1);
 
         Glide.with(getActivity())
                 .load("http://api.pindad.com/as/files/pictures/categ2.JPG")
-                .override(245,180)
-                .centerCrop()
+                .apply(new RequestOptions()
+                        .override(245,180)
+                        .centerCrop())
                 .into(categ2);
 
         Glide.with(getActivity())
                 .load("http://api.pindad.com/as/files/pictures/categ3.JPG")
-                .override(245,180)
-                .centerCrop()
+                .apply(new RequestOptions()
+                        .override(245,180)
+                        .centerCrop())
                 .into(categ3);
 
         Glide.with(getActivity())
                 .load("http://api.pindad.com/as/files/pictures/categ1.JPG")
-                .override(245,180)
-                .centerCrop()
+                .apply(new RequestOptions()
+                        .override(245,180)
+                        .centerCrop())
                 .into(categ4);
 
         mRecyclerView.setHasFixedSize(true);

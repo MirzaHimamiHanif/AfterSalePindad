@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 
 import org.pindad.aftersalepindad.R;
 
@@ -40,8 +41,9 @@ public class ViewPagerAdapter extends PagerAdapter {
         ImageView imageView = (ImageView) view.findViewById(R.id.imageView);
         Glide.with(context)
                 .load(gambar)
-                .override(245,180)
-                .centerCrop()
+                .apply(new RequestOptions()
+                        .override(245,180)
+                        .centerCrop())
                 .into(imageView);
         ViewPager vp = (ViewPager) container;
         vp.addView(view, 0);

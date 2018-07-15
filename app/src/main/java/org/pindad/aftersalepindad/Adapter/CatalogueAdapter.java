@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 
 import org.pindad.aftersalepindad.BarangActivity;
 import org.pindad.aftersalepindad.Model.ListCatalogue;
@@ -44,8 +45,7 @@ public class CatalogueAdapter extends RecyclerView.Adapter<CatalogueAdapter.View
         holder.description.setText(listItems.get(position).getJenis_produk());
         Glide.with(mContext)
                 .load(listItems.get(position).getPic())
-                .override(245,180)
-                .centerCrop()
+                .apply(new RequestOptions().override(245,180).centerCrop())
                 .into(((ViewHolder) holder).image);
         holder.gambar = listItems.get(position).getPic();
     }

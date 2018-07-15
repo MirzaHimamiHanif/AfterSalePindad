@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 
 import org.pindad.aftersalepindad.BarangActivity;
 import org.pindad.aftersalepindad.Model.ListCatalogue;
@@ -45,8 +46,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
         holder.nameCategory.setText(listCategory.get(position).getName_category());
         Glide.with(catContext)
                 .load(listCategory.get(position).getImage_category())
-                .override(245,180)
-                .centerCrop()
+                .apply(new RequestOptions().override(245,180).centerCrop())
                 .into(((ViewHolder) holder).image);
     }
 

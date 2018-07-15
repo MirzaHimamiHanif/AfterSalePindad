@@ -23,13 +23,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+import com.bumptech.glide.request.RequestOptions;
 
 import org.pindad.aftersalepindad.Adapter.CatalogueAdapter;
 import org.pindad.aftersalepindad.Adapter.SimpleMail;
@@ -204,16 +198,16 @@ public class BarangActivity extends AppCompatActivity {
                     case REQUEST_CODE_CAMERA:
                         Glide.with(BarangActivity.this)
                                 .load(imageFiles)
-                                .placeholder(R.drawable.placeholder)
-                                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                                .apply(new RequestOptions()
+                                        .placeholder(R.drawable.placeholder)
+                                        .diskCacheStrategy(DiskCacheStrategy.ALL))
                                 .into(ivImage);
 //                        tvPath.setText(imageFiles.getAbsolutePath());
                         break;
                     case REQUEST_CODE_GALLERY:
                         Glide.with(BarangActivity.this)
                                 .load(imageFiles)
-                                .centerCrop()
-                                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                                .apply(new RequestOptions().centerCrop().diskCacheStrategy(DiskCacheStrategy.ALL))
                                 .into(ivImage);
 //                        tvPath.setText(imageFiles.getAbsolutePath());
                         break;
